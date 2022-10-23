@@ -59,13 +59,5 @@ nnoremap("<leader>gs", "<cmd>Gitsigns<CR>")
 -- Markdown
 nnoremap("<leader>md", "<cmd>MarkdownPreviewToggle<CR>")
 
--- Language tools
-nnoremap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", silentOpts)
-nnoremap("<leader>ln", "<cmd>Lspsaga diagnostic_jump_next<CR>", silentOpts)
-nnoremap("<leader>lh", "<cmd>Lspsaga hover_doc<CR>", silentOpts)
-nnoremap("<leader>la", "<cmd>Lspsaga code_action<CR>", silentOpts)
-nnoremap("<leader>lr", "<cmd>Lspsaga rename<CR>", silentOpts)
-nnoremap("<leader>ld", "<cmd>Lspsaga peek_definition<CR>", silentOpts)
-
 -- Minimap
 nnoremap("<leader>mo", "<cmd>MinimapToggle<CR>")
