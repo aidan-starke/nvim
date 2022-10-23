@@ -11,6 +11,8 @@ nnoremap("<leader>sa", "gg<S-v>G")
 nnoremap("<leader>re", "<cmd>redo<CR>")
 -- Paste & keep clipboard
 xnoremap("<leader>p", "\"_dP")
+-- Delete & keep clipboard
+xnoremap("<leader>d", "\"_d")
 
 -- Split down
 nnoremap("<leader>sd", ":split<Return><C-w>w", silentOpts)
@@ -41,7 +43,7 @@ nnoremap("<leader>r<up>", "<C-w>+")
 nnoremap("<leader>rj", "<C-w>-")
 nnoremap("<leader>r<down>", "<C-w>-")
 
---New tab
+-- New tab
 nnoremap("<leader>tn", ":tabedit")
 -- Switch to right tab
 nnoremap("<leader>t<right>", ":tabnext<CR>")
@@ -53,11 +55,10 @@ nnoremap("<leader>th", ":tabprevious<CR>")
 -- Cheatsheet
 nnoremap("<leader>cs", "<cmd>Cheatsheet<CR>")
 
--- Gitsigns
-nnoremap("<leader>gs", "<cmd>Gitsigns<CR>")
-
 -- Markdown
 nnoremap("<leader>md", "<cmd>MarkdownPreviewToggle<CR>")
 
--- Minimap
-nnoremap("<leader>mo", "<cmd>MinimapToggle<CR>")
+-- Typescript
+nnoremap("<leader>tr", "<cmd>TypescriptRenameFile<CR>")
+nnoremap("<leader>ti", "<cmd>TypescriptAddMissingImports<CR>")
+nnoremap("<leader>tc", "<cmd>TypescriptRemoveUnused<CR>")

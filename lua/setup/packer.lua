@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 	use 'williamboman/mason.nvim' -- LSP manager
 	use 'williamboman/mason-lspconfig.nvim'
 	use 'glepnir/lspsaga.nvim' -- LSP UIs
+	use 'jose-elias-alvarez/typescript.nvim' -- Typescript support
 	use 'L3MON4D3/LuaSnip' -- Snippets
 	use 'wellle/context.vim' -- Keep function definition visible
 	use 'kdheepak/lazygit.nvim' -- Visual git integration
