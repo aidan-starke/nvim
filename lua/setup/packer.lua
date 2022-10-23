@@ -30,6 +30,8 @@ return require('packer').startup(function(use)
 	use 'ggandor/leap.nvim' -- Leap to a character
 	use 'ThePrimeagen/harpoon' -- Create and move between marks
 	use 'folke/which-key.nvim' -- Keybinding suggestions
+	use 'numToStr/Comment.nvim' -- Commenting shortcuts
+	use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
