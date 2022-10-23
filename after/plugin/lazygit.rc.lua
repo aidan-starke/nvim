@@ -1,3 +1,6 @@
+local status = pcall(require, "toggleterm")
+if (not status) then return end
+
 local Terminal = require('toggleterm.terminal').Terminal
 
 local mapOpts = { noremap = true, silent = true }
