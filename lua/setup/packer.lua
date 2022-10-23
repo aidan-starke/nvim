@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
 	use 'nat-418/boole.nvim' -- Toggle booleans, dates, etc
 	use 'ggandor/leap.nvim' -- Leap to a character
 	use 'ThePrimeagen/harpoon' -- Create and move between marks
+	use 'folke/which-key.nvim' -- Keybinding suggestions
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
