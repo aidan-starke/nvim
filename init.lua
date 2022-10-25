@@ -1,1 +1,1 @@
-require("setup.init")
+require("setup")

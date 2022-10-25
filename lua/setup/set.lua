@@ -15,8 +15,7 @@ vim.opt.wrap = false
 
 vim.g.mapleader = " "
 
-vim.g.nord_disable_background = true
-
 vim.opt.clipboard:append { 'unnamedplus' }
 
 vim.opt.updatetime = 50
+

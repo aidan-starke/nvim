@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use 'shaunsingh/nord.nvim' -- Nord colorscheme
+	use 'EdenEast/nightfox.nvim' -- nightfox colorscheme
 	use 'nvim-lualine/lualine.nvim' -- Statusline
 	use 'nvim-lua/plenary.nvim' -- Common utilities
 	use 'onsails/lspkind-nvim' -- vscode-like pictograms
@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
 	use 'folke/which-key.nvim' -- Keybinding suggestions
 	use 'numToStr/Comment.nvim' -- Commenting shortcuts
 	use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
+	use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
