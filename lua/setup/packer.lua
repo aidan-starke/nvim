@@ -3,7 +3,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'EdenEast/nightfox.nvim' -- nightfox colorscheme
-	use 'nvim-lualine/lualine.nvim' -- Statusline
+	use 'feline-nvim/feline.nvim' -- Statusline
+	use 'kyazdani42/nvim-web-devicons' -- Icons
 	use 'nvim-lua/plenary.nvim' -- Common utilities
 	use 'onsails/lspkind-nvim' -- vscode-like pictograms
 	use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words

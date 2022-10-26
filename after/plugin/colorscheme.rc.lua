@@ -7,7 +7,7 @@ nightfox.setup({
 		styles = {
 			comments = "italic",
 			keywords = "bold",
-			types = "italic,bold",
+			-- types = "italic,bold",
 		}
 
 	},
@@ -16,7 +16,8 @@ nightfox.setup({
 nightfox.override.specs({
 	nightfox = {
 		syntax = {
-			type = "#9684A1",
+			type = "#f6aa1c",
+			string = "cyan"
 		}
 	}
 })
