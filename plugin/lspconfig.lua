@@ -26,13 +26,13 @@ local on_attach = function(client, bufnr)
 
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
-
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 	buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
+	-- Diagnostic hover
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		callback = function()
@@ -47,6 +47,7 @@ local on_attach = function(client, bufnr)
 		end
 	})
 
+	-- Aerial window
 	-- Toggle the aerial window with <leader>a
 	buf_set_keymap('n', '<leader>;a', '<cmd>AerialToggle!<CR>', opts)
 	-- Jump forwards/backwards with '{' and '}'
@@ -128,17 +129,10 @@ nvim_lsp.tailwindcss.setup {
 	capabilities = capabilities
 }
 
--- nvim_lsp.rust_analyzer.setup {
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		["rust-analyzer"] = {
--- 			checkOnSave = {
--- 				command = "clippy"
--- 			},
--- 		}
--- 	}
--- }
+nvim_lsp.solidity.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
