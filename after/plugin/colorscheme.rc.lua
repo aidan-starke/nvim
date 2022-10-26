@@ -13,14 +13,24 @@ nightfox.setup({
 	},
 })
 
+-- Javascript theme overrides
+local orange = "#f6aa1c"
+local purple = "#0000ff"
 nightfox.override.specs({
 	nightfox = {
 		syntax = {
-			type = "#f6aa1c",
-			string = "cyan"
+			type = orange,
+			number = orange,
+			preproc = purple,
+			conditional = purple,
+			string = "cyan",
+			bracket = "#98f5e1",
+			builtin0 = "magenta", -- 'function'
+			ident = "pink"
 		}
 	}
 })
+
 vim.cmd("colorscheme nightfox")
 
 local isTransparent = true
