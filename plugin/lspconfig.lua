@@ -129,9 +129,10 @@ nvim_lsp.tailwindcss.setup {
 	capabilities = capabilities
 }
 
-nvim_lsp.solidity.setup {
+nvim_lsp.solc.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
+	root_dir = nvim_lsp.util.root_pattern('hardhat.config.*', '.git'),
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
