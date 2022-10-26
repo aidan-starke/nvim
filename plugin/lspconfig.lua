@@ -3,6 +3,18 @@ if (not status) then return end
 
 local protocol = require('vim.lsp.protocol')
 
+local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+local enable_format_on_save = function(_, bufnr)
+	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup_format,
+		buffer = bufnr,
+		callback = function()
+			vim.lsp.buf.format({ bufnr = bufnr })
+		end,
+	})
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -24,17 +36,25 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		callback = function()
-			local opts = {
+			vim.diagnostic.open_float(nil, {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
 				border = 'rounded',
 				source = 'always',
 				prefix = ' ',
 				scope = 'cursor',
-			}
-			vim.diagnostic.open_float(nil, opts)
+			})
 		end
 	})
+
+	-- Toggle the aerial window with <leader>a
+	buf_set_keymap('n', '<leader>oa', '<cmd>AerialToggle!<CR>', opts)
+	-- Jump forwards/backwards with '{' and '}'
+	buf_set_keymap('n', '{', '<cmd>AerialPrev<CR>', opts)
+	buf_set_keymap('n', '}', '<cmd>AerialNext<CR>', opts)
+	-- Jump up the tree with '[[' or ']]'
+	buf_set_keymap('n', '[[', '<cmd>AerialPrevUp<CR>', opts)
+	buf_set_keymap('n', ']]', '<cmd>AerialNextUp<CR>', opts)
 end
 
 protocol.CompletionItemKind = {
@@ -77,7 +97,8 @@ nvim_lsp.tsserver.setup {
 	on_attach = on_attach,
 	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
-	capabilities = capabilities
+	capabilities = capabilities,
+	root_dir = function() return vim.loop.cwd() end
 }
 
 nvim_lsp.sourcekit.setup {
@@ -117,10 +138,6 @@ nvim_lsp.cssls.setup {
 	capabilities = capabilities
 }
 
-nvim_lsp.astro.setup {
-	on_attach = on_attach,
-	capabilities = capabilities
-}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {

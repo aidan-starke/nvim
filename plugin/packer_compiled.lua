@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["aerial.nvim"] = {
+    loaded = true,
+    path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["boole.nvim"] = {
     loaded = true,
     path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/boole.nvim",
@@ -169,10 +174,10 @@ _G.packer_plugins = {
     path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
   },
-  ["nord.nvim"] = {
+  ["nightfox.nvim"] = {
     loaded = true,
-    path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
+    path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -250,6 +255,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
+  },
+  ["vim-jsx-pretty"] = {
+    loaded = true,
+    path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
+    url = "https://github.com/maxmellon/vim-jsx-pretty"
   },
   ["which-key.nvim"] = {
     loaded = true,

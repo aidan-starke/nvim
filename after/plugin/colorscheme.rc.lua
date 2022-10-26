@@ -9,6 +9,15 @@ nightfox.setup({
 			keywords = "bold",
 			types = "italic,bold",
 		}
+
+	},
+})
+
+nightfox.override.specs({
+	nightfox = {
+		syntax = {
+			type = "#9684A1",
+		}
 	}
 })
 vim.cmd("colorscheme nightfox")
