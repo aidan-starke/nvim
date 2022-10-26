@@ -101,11 +101,6 @@ nvim_lsp.tsserver.setup {
 	root_dir = function() return vim.loop.cwd() end
 }
 
-nvim_lsp.sourcekit.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-
 nvim_lsp.sumneko_lua.setup {
 	capabilities = capabilities,
 	on_attach = function(client, bufnr)
@@ -133,11 +128,17 @@ nvim_lsp.tailwindcss.setup {
 	capabilities = capabilities
 }
 
-nvim_lsp.cssls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities
-}
-
+-- nvim_lsp.rust_analyzer.setup {
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		["rust-analyzer"] = {
+-- 			checkOnSave = {
+-- 				command = "clippy"
+-- 			},
+-- 		}
+-- 	}
+-- }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
