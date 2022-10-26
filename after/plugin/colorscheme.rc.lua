@@ -13,29 +13,48 @@ nightfox.setup({
 	},
 })
 
--- Javascript theme overrides
-local orange = "#f6aa1c"
-local purple = "#0000ff"
-nightfox.override.specs({
-	nightfox = {
-		syntax = {
-			type = orange,
-			number = orange,
-			preproc = purple,
-			conditional = purple,
-			string = "cyan",
-			bracket = "#98f5e1",
-			builtin0 = "magenta", -- 'function'
-			ident = "pink"
-		}
-	}
-})
+local function apply_overrides()
+	local orange = "#f6aa1c"
+	local purple = "#0000ff"
+	local bracket = "#98f5e1"
+	local filetype = vim.bo.filetype
 
-vim.cmd("colorscheme nightfox")
+	if (filetype == "typescript" or filetype == "typescriptreact")
+	then
+		nightfox.override.specs({
+			nightfox = {
+				syntax = {
+					type = orange,
+					bracket = bracket,
+					string = "cyan",
+				}
+			}
+		})
+	else
+		nightfox.override.specs({
+			nightfox = {
+				syntax = {
+					type = orange,
+					number = orange,
+					preproc = purple,
+					bracket = bracket,
+					conditional = purple,
+					ident = "pink",
+					string = "cyan",
+					builtin0 = "magenta", -- 'function'
+				}
+			}
+		})
+	end
+
+	vim.cmd("colorscheme nightfox")
+end
+
+apply_overrides()
 
 local isTransparent = true
 
-function toggle_transparent_background()
+function Toggle_transparent_background()
 	if isTransparent then
 		nightfox.setup({
 			options = {
@@ -54,5 +73,6 @@ function toggle_transparent_background()
 	vim.cmd("colorscheme nightfox")
 end
 
-vim.api.nvim_set_keymap('n', '<leader>ct', '<cmd>lua toggle_transparent_background()<CR>',
-	{ noremap = true, silent = true })
+local mapOpts = { noremap = true, silent = true }
+
+vim.api.nvim_set_keymap('n', '<leader>ct', '<cmd>lua Toggle_transparent_background()<CR>', mapOpts)
