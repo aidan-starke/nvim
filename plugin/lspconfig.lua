@@ -48,7 +48,7 @@ local on_attach = function(client, bufnr)
 	})
 
 	-- Toggle the aerial window with <leader>a
-	buf_set_keymap('n', '<leader>oa', '<cmd>AerialToggle!<CR>', opts)
+	buf_set_keymap('n', '<leader>;a', '<cmd>AerialToggle!<CR>', opts)
 	-- Jump forwards/backwards with '{' and '}'
 	buf_set_keymap('n', '{', '<cmd>AerialPrev<CR>', opts)
 	buf_set_keymap('n', '}', '<cmd>AerialNext<CR>', opts)
