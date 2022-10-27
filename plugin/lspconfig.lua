@@ -61,6 +61,9 @@ local on_attach = function(client, bufnr)
 			})
 		end
 	})
+
+	-- Illuminate
+	require("illuminate").on_attach(client)
 end
 
 protocol.CompletionItemKind = {

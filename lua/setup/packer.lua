@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
 	use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 	use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 	use 'stevearc/aerial.nvim' -- Code outline window
+	use 'RRethy/vim-illuminate' -- Highlight word under cursor
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)

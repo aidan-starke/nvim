@@ -19,3 +19,4 @@ vim.opt.clipboard:append { 'unnamedplus' }
 
 vim.opt.updatetime = 50
 
+vim.g.Illuminate_ftblacklist = { 'NvimTree' }
