@@ -18,19 +18,34 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+	local opts = { noremap = true, silent = true }
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
-	--Enable completion triggered by <c-x><c-o>
-	--local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-	--buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+	-- Diagnostics
+	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	buf_set_keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
+	buf_set_keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+	buf_set_keymap("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
+	buf_set_keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	buf_set_keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+	buf_set_keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+	buf_set_keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+	buf_set_keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	buf_set_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+	-- Aerial window
+	buf_set_keymap('n', '<leader>;a', '<cmd>AerialToggle!<CR>', opts)
+	-- Jump forwards/backwards with '{' and '}'
+	buf_set_keymap('n', '{', '<cmd>AerialPrev<CR>', opts)
+	buf_set_keymap('n', '}', '<cmd>AerialNext<CR>', opts)
+	-- Jump up the tree with '[[' or ']]'
+	buf_set_keymap('n', '[[', '<cmd>AerialPrevUp<CR>', opts)
+	buf_set_keymap('n', ']]', '<cmd>AerialNextUp<CR>', opts)
 
 	-- Diagnostic hover
 	vim.api.nvim_create_autocmd("CursorHold", {
@@ -46,16 +61,6 @@ local on_attach = function(client, bufnr)
 			})
 		end
 	})
-
-	-- Aerial window
-	-- Toggle the aerial window with <leader>a
-	buf_set_keymap('n', '<leader>;a', '<cmd>AerialToggle!<CR>', opts)
-	-- Jump forwards/backwards with '{' and '}'
-	buf_set_keymap('n', '{', '<cmd>AerialPrev<CR>', opts)
-	buf_set_keymap('n', '}', '<cmd>AerialNext<CR>', opts)
-	-- Jump up the tree with '[[' or ']]'
-	buf_set_keymap('n', '[[', '<cmd>AerialPrevUp<CR>', opts)
-	buf_set_keymap('n', ']]', '<cmd>AerialNextUp<CR>', opts)
 end
 
 protocol.CompletionItemKind = {
