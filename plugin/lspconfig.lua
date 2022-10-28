@@ -102,7 +102,7 @@ local servers = { "flow",
 	"tailwindcss",
 	"sumneko_lua",
 	"tsserver",
-	"solc"
+	"solidity"
 }
 
 local opts = {}
@@ -143,11 +143,11 @@ for _, lsp in ipairs(servers) do
 		opts = vim.tbl_deep_extend("force", opts, tailwind_opts)
 	end
 
-	if lsp == "solc" then
-		local solc_opts = {
-			cmd = { "solcjs", "--base-path", vim.fn.getcwd() }
+	if lsp == "solidity" then
+		local solidity_opts = {
+			cmd = { "solidity-ls", "--stdio" },
 		}
-		opts = vim.tbl_deep_extend("force", opts, solc_opts)
+		opts = vim.tbl_deep_extend("force", opts, solidity_opts)
 	end
 
 	nvim_lsp[lsp].setup(opts)
