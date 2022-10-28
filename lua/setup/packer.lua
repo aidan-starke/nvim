@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
 	use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 	use 'stevearc/aerial.nvim' -- Code outline window
 	use 'RRethy/vim-illuminate' -- Highlight word under cursor
+	use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end } -- Window management
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
