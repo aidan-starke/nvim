@@ -8,8 +8,10 @@ nightfox.setup({
 			comments = "italic",
 			keywords = "bold",
 			-- types = "italic,bold",
+		},
+		groups = {
+			bg = "#f6aa1c"
 		}
-
 	},
 })
 
@@ -25,7 +27,7 @@ local function apply_overrides()
 			nightfox = {
 				syntax = {
 					type = orange,
-					bracket = bracket,
+					-- bracket = bracket,
 					string = "cyan",
 				}
 			}
@@ -37,7 +39,7 @@ local function apply_overrides()
 					type = orange,
 					number = orange,
 					preproc = purple,
-					bracket = bracket,
+					-- bracket = orange,
 					conditional = purple,
 					ident = "pink",
 					string = "cyan",
@@ -73,6 +75,4 @@ function Toggle_transparent_background()
 	vim.cmd("colorscheme nightfox")
 end
 
-local mapOpts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap('n', '<leader>ct', '<cmd>lua Toggle_transparent_background()<CR>', mapOpts)
+require("setup.keymap").nnoremap('<leader>ct', '<cmd>lua Toggle_transparent_background()<CR>', { silent = true })

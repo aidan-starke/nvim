@@ -2,6 +2,7 @@ local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 local lspkind = require 'lspkind'
 
+if (not cmp) then return end
 cmp.setup({
 	snippet = {
 		expand = function(args)

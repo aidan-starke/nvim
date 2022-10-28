@@ -1,8 +1,6 @@
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
-local protocol = require('vim.lsp.protocol')
-
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
 	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
@@ -18,35 +16,34 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local opts = { noremap = true, silent = true }
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
-	-- Diagnostics
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	buf_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
-	buf_set_keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-	buf_set_keymap("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
-	buf_set_keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-	buf_set_keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-	buf_set_keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-	buf_set_keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-	buf_set_keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+	local set_keymaps = function(pairs)
+		for _, pair in ipairs(pairs) do
+			local key, map = unpack(pair)
 
-	-- Aerial window
-	buf_set_keymap('n', '<leader>;a', '<cmd>AerialToggle!<CR>', opts)
-	-- Jump forwards/backwards with '{' and '}'
-	buf_set_keymap('n', '{', '<cmd>AerialNext<CR>', opts)
-	buf_set_keymap('n', '}', '<cmd>AerialPrev<CR>', opts)
-	-- Jump up the tree with '[[' or ']]'
-	buf_set_keymap('n', ']]', '<cmd>lua require("aerial").next_up()<CR>', opts)
-	buf_set_keymap('n', '[[', '<cmd>lua require("aerial").prev_up()<CR>', opts)
+			buf_set_keymap('n', key, map, { noremap = true, silent = true })
+		end
+	end
+
+	set_keymaps({
+		{ 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
+		{ 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
+		{ 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
+		{ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
+		{ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
+		{ 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
+		{ 'li', '<cmd>LspInfo<CR>' },
+		{ 'lI', '<cmd>LspInstallInfo<CR>' },
+		{ 'la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
+		{ 'lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
+		-- Aerial
+		{ ';a', '<cmd>AerialToggle<CR>' },
+		{ '{', '<cmd>AerialNext<CR>' },
+		{ '}', '<cmd>AerialPrev<CR>' },
+		{ ']]', '<cmd>lua require("aerial").next_up()<CR>' },
+		{ '[[', '<cmd>lua require("aerial).prev_up()<CR>' }
+	})
 
 	-- Diagnostic hover
 	vim.api.nvim_create_autocmd("CursorHold", {
@@ -55,63 +52,65 @@ local on_attach = function(client, bufnr)
 			vim.diagnostic.open_float(nil, {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = 'rounded',
-				source = 'always',
-				prefix = ' ',
-				scope = 'cursor',
+				border = "double",
+				source = "always",
+				prefix = " ",
+				scope = "cursor",
 			})
 		end
 	})
 
 	-- Illuminate
 	require("illuminate").on_attach(client)
+
+	-- Signature
+	require("lsp_signature").on_attach({
+		bind = true,
+		hint_enable = true,
+		toggle_key = "<C-m>",
+		hint_prefix = "🤔  ",
+		hint_scheme = "String",
+		floating_window = false,
+		handler_opts = {
+			border = "double"
+		}
+	}, bufnr)
 end
 
-protocol.CompletionItemKind = {
-	'', -- Text
-	'', -- Method
-	'', -- Function
-	'', -- Constructor
-	'', -- Field
-	'', -- Variable
-	'', -- Class
-	'ﰮ', -- Interface
-	'', -- Module
-	'', -- Property
-	'', -- Unit
-	'', -- Value
-	'', -- Enum
-	'', -- Keyword
-	'﬌', -- Snippet
-	'', -- Color
-	'', -- File
-	'', -- Reference
-	'', -- Folder
-	'', -- EnumMember
-	'', -- Constant
-	'', -- Struct
-	'', -- Event
-	'ﬦ', -- Operator
-	'', -- TypeParameter
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "double" }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "double" }),
+	["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics, {
+		underline = true,
+		update_in_insert = false,
+		virtual_text = { spacing = 4, prefix = "●" },
+		severity_sort = true,
+	})
 }
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local servers = { "flow",
+local servers = {
+	"flow",
 	"tailwindcss",
 	"sumneko_lua",
 	"tsserver",
-	"solidity"
+	"solidity",
+	"rust_analyzer"
 }
 
 local opts = {}
 
 for _, lsp in ipairs(servers) do
 	opts = {
+		handlers = handlers,
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
+	local merge_opts = function(m_opts)
+		return vim.tbl_deep_extend("force", opts, m_opts)
+	end
+
 	if lsp == "sumneko_lua" then
 		local lua_opts = {
 			on_attach = function(client, bufnr)
@@ -122,7 +121,7 @@ for _, lsp in ipairs(servers) do
 				Lua = {
 					diagnostics = {
 						-- Get the language server to recognize the `vim` global
-						globals = { 'vim' },
+						globals = { "vim" },
 					},
 
 					workspace = {
@@ -133,34 +132,51 @@ for _, lsp in ipairs(servers) do
 				},
 			},
 		}
-		opts = vim.tbl_deep_extend("force", opts, lua_opts)
+		opts = merge_opts(lua_opts)
 	end
 
 	if lsp == "tailwindcss" then
 		local tailwind_opts = {
 			filetypes = { "javascriptreact", "typescriptreact", "svelte" }
 		}
-		opts = vim.tbl_deep_extend("force", opts, tailwind_opts)
+		opts = merge_opts(tailwind_opts)
 	end
 
 	if lsp == "solidity" then
 		local solidity_opts = {
 			cmd = { "solidity-ls", "--stdio" },
 		}
-		opts = vim.tbl_deep_extend("force", opts, solidity_opts)
+		opts = merge_opts(solidity_opts)
+	end
+
+	if lsp == "rust_analyzer" then
+		require("rust-tools").setup {
+			tools = {
+				on_initialized = function()
+					vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()]]
+				end,
+			},
+			server = merge_opts({
+				settings = {
+					["rust-analyzer"] = {
+						lens = {
+							enable = true,
+						},
+						checkOnSave = {
+							command = "clippy",
+						},
+					},
+				},
+			}),
+		}
+
+		goto continue
 	end
 
 	nvim_lsp[lsp].setup(opts)
+	::continue::
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-	underline = true,
-	update_in_insert = false,
-	virtual_text = { spacing = 4, prefix = "●" },
-	severity_sort = true,
-}
-)
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -171,7 +187,7 @@ end
 
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = '●'
+		prefix = "●"
 	},
 	update_in_insert = true,
 	float = {

@@ -14,9 +14,9 @@ return require('packer').startup(function(use)
 	use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 	use 'williamboman/mason.nvim' -- LSP manager
 	use 'williamboman/mason-lspconfig.nvim'
-	use 'glepnir/lspsaga.nvim' -- LSP UIs
 	use 'simrat39/rust-tools.nvim' -- Rust tools
 	use 'j-hui/fidget.nvim' -- Visual LSP progress
+	use 'ray-x/lsp_signature.nvim' -- LSP signature help
 	use 'L3MON4D3/LuaSnip' -- Snippets
 	use 'wellle/context.vim' -- Keep function definition visible
 	use 'kdheepak/lazygit.nvim' -- Visual git integration
@@ -31,12 +31,13 @@ return require('packer').startup(function(use)
 	use 'nat-418/boole.nvim' -- Toggle booleans, dates, etc
 	use 'ggandor/leap.nvim' -- Leap to a character
 	use 'ThePrimeagen/harpoon' -- Create and move between marks
-	use 'folke/which-key.nvim' -- Keybinding suggestions
 	use 'numToStr/Comment.nvim' -- Commenting shortcuts
 	use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 	use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 	use 'stevearc/aerial.nvim' -- Code outline window
 	use 'RRethy/vim-illuminate' -- Highlight word under cursor
+	use 'lewis6991/impatient.nvim' -- Speed up startup
+	use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
 	use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end } -- Window management
 	use {
 		'nvim-tree/nvim-tree.lua',

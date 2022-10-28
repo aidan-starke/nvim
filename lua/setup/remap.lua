@@ -10,8 +10,8 @@ nnoremap("<leader>re", "<cmd>redo<CR>")
 
 -- Focus
 nnoremap("<leader>st", "<cmd>FocusToggle<CR>")
-nnoremap("<leader>s", "<cmd>FocusSplitNicely<CR>")
-nnoremap("<leader>sw", "<cmd>FocusSplitCycle<CR>")
+nnoremap("<leader>ss", "<cmd>FocusSplitNicely<CR>")
+nnoremap("<leader><leader>", "<cmd>FocusSplitCycle<CR>")
 -- Move to left split tab
 nnoremap("<leader>sh", "<C-w>h")
 -- Move to right split tab
@@ -27,9 +27,6 @@ nnoremap("<leader>tn", ":tabedit ")
 nnoremap("<leader>tk", "<cmd>tabnext<CR>")
 -- Switch to left tab
 nnoremap("<leader>tj", "<cmd>tabprevious<CR>")
-
--- Cheatsheet
-nnoremap("<leader>cs", "<cmd>Cheatsheet<CR>")
 
 -- Markdown
 nnoremap("<leader>md", "<cmd>MarkdownPreviewToggle<CR>")
