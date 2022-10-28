@@ -58,11 +58,6 @@ nnoremap("<leader>cs", "<cmd>Cheatsheet<CR>")
 -- Markdown
 nnoremap("<leader>md", "<cmd>MarkdownPreviewToggle<CR>")
 
--- Typescript
-nnoremap("<leader>tr", "<cmd>TypescriptRenameFile<CR>")
-nnoremap("<leader>ti", "<cmd>TypescriptAddMissingImports<CR>")
-nnoremap("<leader>tc", "<cmd>TypescriptRemoveUnused<CR>")
-
 -- Illuminate
 nnoremap("<leader>in", "<cmd>lua require('illuminate').next_reference{wrap=true}<CR>")
 nnoremap("<leader>ip", "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<CR>")
