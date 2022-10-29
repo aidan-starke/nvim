@@ -146,6 +146,8 @@ for _, lsp in ipairs(servers) do
 	end
 
 	if lsp == "rust_analyzer" then
+		require("setup.rust").set_rust_keymaps()
+
 		require("rust-tools").setup {
 			tools = {
 				on_initialized = function()
