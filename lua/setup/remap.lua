@@ -12,6 +12,9 @@ nnoremap("<leader>re", "<cmd>redo<CR>")
 nnoremap("<leader>st", "<cmd>FocusToggle<CR>")
 nnoremap("<leader>ss", "<cmd>FocusSplitNicely<CR>")
 nnoremap("<leader><leader>", "<cmd>FocusSplitCycle<CR>")
+-- Split tab
+nnoremap("<leader>sd", "<cmd>FocusSplitDown<CR>")
+nnoremap("<leader>sr", "<cmd>FocusSplitRight<CR>")
 -- Move to left split tab
 nnoremap("<leader>sh", "<C-w>h")
 -- Move to right split tab
