@@ -67,7 +67,7 @@ local on_attach = function(client, bufnr)
 	require("lsp_signature").on_attach({
 		bind = true,
 		hint_enable = true,
-		toggle_key = "<C-m>",
+		toggle_key = "<C-f>",
 		hint_prefix = "🤔  ",
 		hint_scheme = "String",
 		floating_window = false,
@@ -79,7 +79,6 @@ end
 
 local handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "double" }),
-	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "double" }),
 	["textDocument/publishDiagnostics"] = vim.lsp.with(
 		vim.lsp.diagnostic.on_publish_diagnostics, {
 		underline = true,
