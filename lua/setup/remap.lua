@@ -1,39 +1,43 @@
 local nnoremap = require("setup.keymap").nnoremap
 
--- Focus Tree
-nnoremap("<leader>ft", "<cmd>NvimTreeToggle<CR>")
+require("setup.helpers").set_keymaps(nnoremap,
+	{
+		-- Toggle Tree
+		{ "<leader>ft", "<cmd>NvimTreeToggle<CR>" },
 
--- Select All
-nnoremap("<leader>sa", "gg<S-v>G")
--- Redo
-nnoremap("<leader>re", "<cmd>redo<CR>")
+		-- Select All
+		{ "<leader>sa", "gg<S-v>G" },
+		-- Redo
+		{ "<leader>re", "<cmd>redo<CR>" },
 
--- Focus
-nnoremap("<leader>st", "<cmd>FocusToggle<CR>")
-nnoremap("<leader>ss", "<cmd>FocusSplitNicely<CR>")
-nnoremap("<leader><leader>", "<cmd>FocusSplitCycle<CR>")
--- Split tab
-nnoremap("<leader>sd", "<cmd>FocusSplitDown<CR>")
-nnoremap("<leader>sr", "<cmd>FocusSplitRight<CR>")
--- Move to left split tab
-nnoremap("<leader>sh", "<C-w>h")
--- Move to right split tab
-nnoremap("<leader>sl", "<C-w>l")
--- Move to top split tab
-nnoremap("<leader>sk", "<C-w>k")
--- Move to bottom split tab
-nnoremap("<leader>sj", "<C-w>j")
+		-- Focus
+		{ "<leader>st", "<cmd>FocusToggle<CR>" },
+		{ "<leader>ss", "<cmd>FocusSplitNicely<CR>" },
+		{ "<leader><leader>", "<cmd>FocusSplitCycle<CR>" },
+		-- Split tab
+		{ "<leader>sd", "<cmd>FocusSplitDown<CR>" },
+		{ "<leader>sr", "<cmd>FocusSplitRight<CR>" },
+		-- Move to left split tab
+		{ "<leader>sh", "<C-w>h" },
+		-- Move to right split tab
+		{ "<leader>sl", "<C-w>l" },
+		-- Move to top split tab
+		{ "<leader>sk", "<C-w>k" },
+		-- Move to bottom split tab
+		{ "<leader>sj", "<C-w>j" },
 
--- New tab
-nnoremap("<leader>tn", ":tabedit ")
--- Switch to right tab
-nnoremap("<leader>tk", "<cmd>tabnext<CR>")
--- Switch to left tab
-nnoremap("<leader>tj", "<cmd>tabprevious<CR>")
+		-- New tab
+		{ "<leader>tn", ":tabedit " },
+		-- Switch to right tab
+		{ "<leader>tk", "<cmd>tabnext<CR>" },
+		-- Switch to left tab
+		{ "<leader>tj", "<cmd>tabprevious<CR>" },
 
--- Markdown
-nnoremap("<leader>md", "<cmd>MarkdownPreviewToggle<CR>")
+		-- Markdown
+		{ "<leader>md", "<cmd>MarkdownPreviewToggle<CR>" },
 
--- Illuminate
-nnoremap("<leader>in", "<cmd>lua require('illuminate').next_reference{wrap=true}<CR>")
-nnoremap("<leader>ip", "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<CR>")
+		-- Illuminate
+		{ "<leader>in", "<cmd>lua require('illuminate').next_reference{wrap=true}<CR>" },
+		{ "<leader>ip", "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<CR>" },
+	}
+)

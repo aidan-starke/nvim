@@ -12,8 +12,6 @@ end
 
 local fb_actions = require "telescope".extensions.file_browser.actions
 
-telescope.load_extension('harpoon')
-
 telescope.setup {
 	defaults = {
 		mappings = {
@@ -42,6 +40,13 @@ telescope.setup {
 				},
 			},
 		},
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			-- the default case_mode is "smart_case"
+		}
 	},
 }
 

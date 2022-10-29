@@ -13,37 +13,30 @@ local enable_format_on_save = function(_, bufnr)
 	})
 end
 
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, 'n', ...) end
 
-	local set_keymaps = function(pairs)
-		for _, pair in ipairs(pairs) do
-			local key, map = unpack(pair)
-
-			buf_set_keymap('n', key, map, { noremap = true, silent = true })
-		end
-	end
-
-	set_keymaps({
-		{ 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
-		{ 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
-		{ 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
-		{ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
-		{ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
-		{ 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
-		{ 'li', '<cmd>LspInfo<CR>' },
-		{ 'lI', '<cmd>LspInstallInfo<CR>' },
-		{ 'la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
-		{ 'lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-		-- Aerial
-		{ ';a', '<cmd>AerialToggle<CR>' },
-		{ '{', '<cmd>AerialNext<CR>' },
-		{ '}', '<cmd>AerialPrev<CR>' },
-		{ ']]', '<cmd>lua require("aerial").next_up()<CR>' },
-		{ '[[', '<cmd>lua require("aerial).prev_up()<CR>' }
-	})
+	require("setup.helpers").set_keymaps(buf_set_keymap,
+		{
+			{ 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
+			{ 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
+			{ 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
+			{ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
+			{ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
+			{ 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
+			{ 'li', '<cmd>LspInfo<CR>' },
+			{ 'la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
+			{ 'lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
+			-- Aerial
+			{ ';a', '<cmd>AerialToggle<CR>' },
+			{ '{', '<cmd>AerialNext<CR>' },
+			{ '}', '<cmd>AerialPrev<CR>' },
+			{ ']]', '<cmd>lua require("aerial").next_up()<CR>' },
+			{ '[[', '<cmd>lua require("aerial).prev_up()<CR>' }
+		}, { noremap = true, silent = true })
 
 	-- Diagnostic hover
 	vim.api.nvim_create_autocmd("CursorHold", {
@@ -75,6 +68,9 @@ local on_attach = function(client, bufnr)
 			border = "double"
 		}
 	}, bufnr)
+
+	-- Colorscheme
+	require("setup.nightfox").apply_overrides(vim.bo.filetype)
 end
 
 local handlers = {
@@ -99,6 +95,7 @@ local servers = {
 }
 
 local opts = {}
+local merge_tables = require("setup.helpers").merge_tables
 
 for _, lsp in ipairs(servers) do
 	opts = {
@@ -107,7 +104,7 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	}
 	local merge_opts = function(m_opts)
-		return vim.tbl_deep_extend("force", opts, m_opts)
+		return merge_tables(opts, m_opts)
 	end
 
 	if lsp == "sumneko_lua" then

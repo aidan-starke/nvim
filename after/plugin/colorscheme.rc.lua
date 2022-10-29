@@ -4,55 +4,10 @@ if (not status) then return end
 nightfox.setup({
 	options = {
 		transparent = true,
-		styles = {
-			comments = "italic",
-			keywords = "bold",
-			-- types = "italic,bold",
-		},
-		groups = {
-			bg = "#f6aa1c"
-		}
 	},
 })
 
-local function apply_overrides()
-	local orange = "#f6aa1c"
-	local purple = "#0000ff"
-	local bracket = "#98f5e1"
-	local filetype = vim.bo.filetype
-
-	if (filetype == "typescript" or filetype == "typescriptreact")
-	then
-		nightfox.override.specs({
-			nightfox = {
-				syntax = {
-					type = orange,
-					-- bracket = bracket,
-					string = "cyan",
-				}
-			}
-		})
-	else
-		nightfox.override.specs({
-			nightfox = {
-				syntax = {
-					type = orange,
-					number = orange,
-					preproc = purple,
-					-- bracket = orange,
-					conditional = purple,
-					ident = "pink",
-					string = "cyan",
-					builtin0 = "magenta", -- 'function'
-				}
-			}
-		})
-	end
-
-	vim.cmd("colorscheme nightfox")
-end
-
-apply_overrides()
+require("setup.nightfox").apply_overrides()
 
 local isTransparent = true
 
