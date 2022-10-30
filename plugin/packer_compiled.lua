@@ -109,11 +109,6 @@ _G.packer_plugins = {
     path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["context.vim"] = {
-    loaded = true,
-    path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/context.vim",
-    url = "https://github.com/wellle/context.vim"
-  },
   ["copilot.vim"] = {
     loaded = true,
     path = "/Users/aidan/.local/share/nvim/site/pack/packer/start/copilot.vim",

@@ -18,7 +18,8 @@ Toggle_indent = function()
 		'json',
 		'text',
 		'log',
-		'typescript'
+		'typescript',
+		'rust'
 	}
 	local opts = {
 		char = '│',

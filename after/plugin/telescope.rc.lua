@@ -50,37 +50,39 @@ telescope.setup {
 	},
 }
 
-nmap(';f',
-	function()
-		builtin.find_files({
-			no_ignore = false,
-			hidden = true
+require("setup.helpers").set_keymaps(nmap, {
+	{ ';f',
+		function()
+			builtin.find_files({
+				no_ignore = false,
+				hidden = true
+			})
+		end },
+	{ ';g', function()
+		builtin.live_grep()
+	end },
+	{ '\\\\', function()
+		builtin.buffers()
+	end },
+	{ ';t', function()
+		builtin.help_tags()
+	end },
+	{ ';;', function()
+		builtin.resume()
+	end },
+	{ ';e', function()
+		builtin.diagnostics()
+	end },
+	{ ";b", function()
+		telescope.extensions.file_browser.file_browser({
+			path = "%:p:h",
+			cwd = telescope_buffer_dir(),
+			respect_gitignore = false,
+			hidden = true,
+			grouped = true,
+			previewer = false,
+			initial_mode = "normal",
+			layout_config = { height = 40 }
 		})
-	end)
-nmap(';g', function()
-	builtin.live_grep()
-end)
-nmap('\\\\', function()
-	builtin.buffers()
-end)
-nmap(';t', function()
-	builtin.help_tags()
-end)
-nmap(';;', function()
-	builtin.resume()
-end)
-nmap(';e', function()
-	builtin.diagnostics()
-end)
-nmap(";b", function()
-	telescope.extensions.file_browser.file_browser({
-		path = "%:p:h",
-		cwd = telescope_buffer_dir(),
-		respect_gitignore = false,
-		hidden = true,
-		grouped = true,
-		previewer = false,
-		initial_mode = "normal",
-		layout_config = { height = 40 }
-	})
-end)
+	end },
+})

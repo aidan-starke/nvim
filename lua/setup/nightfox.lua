@@ -15,7 +15,7 @@ M.apply_overrides = function(filetype)
 		string = "cyan",
 	}
 
-	if filetype == "typescript" or filetype == "typescriptreact" then
+	if filetype == "typescript" or filetype == "typescriptreact" or filetype == "rust" then
 		syntax.type = orange
 	else
 		syntax.type = orange.bright
