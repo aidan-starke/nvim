@@ -4,7 +4,7 @@ if (not status) then return end
 vim.cmd [[highlight IndentBlanklineIndent guifg=#3b4252 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#f6aa1c gui=nocombine]]
 
-local is_enabled = false
+local is_enabled = true
 local merge_tables = require("setup.helpers").merge_tables
 
 Toggle_indent = function()
@@ -18,7 +18,10 @@ Toggle_indent = function()
 		'json',
 		'text',
 		'log',
+		'javascript',
+		'javascriptreact',
 		'typescript',
+		'typescriptreact',
 		'rust'
 	}
 	local opts = {
