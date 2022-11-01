@@ -2,7 +2,7 @@ local nnoremap = require("setup.keymap").nnoremap
 
 require("setup.helpers").set_keymaps(nnoremap,
 	{
-		-- Toggle Tree
+		-- Toggle FileTree
 		{ "<leader>ft", "<cmd>NvimTreeToggle<CR>" },
 
 		-- Select All
@@ -39,5 +39,8 @@ require("setup.helpers").set_keymaps(nnoremap,
 		-- Illuminate
 		{ "<leader>in", "<cmd>lua require('illuminate').next_reference{wrap=true}<CR>" },
 		{ "<leader>ip", "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<CR>" },
+
+		-- Undotree
+		{ "<leader>ut", "<cmd>UndotreeToggle<CR>" },
 	}
 )

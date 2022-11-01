@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
 	use 'RRethy/vim-illuminate' -- Highlight word under cursor
 	use 'lewis6991/impatient.nvim' -- Speed up startup
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
+	use 'mbbill/undotree' -- Undo history
 	use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end } -- Window management
 	use {
 		'nvim-tree/nvim-tree.lua',
