@@ -38,6 +38,9 @@ return require('packer').startup(function(use)
 	use 'lewis6991/impatient.nvim' -- Speed up startup
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
 	use 'mbbill/undotree' -- Undo history
+	use 'mfussenegger/nvim-dap' -- Debugging
+	use 'rcarriga/nvim-dap-ui' -- Debugging UI
+	use 'theHamsta/nvim-dap-virtual-text' -- Debugging virtual text
 	use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end } -- Window management
 	use {
 		'nvim-tree/nvim-tree.lua',
@@ -45,6 +48,7 @@ return require('packer').startup(function(use)
 	} -- File tree
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		commit = "47ffd0dfc5500a7c48d1b4c2a01949f5d6a041f2",
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	} -- Treesitter
 	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
