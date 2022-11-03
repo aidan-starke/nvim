@@ -3,6 +3,7 @@ if (not status) then return end
 
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
+local themes = require("telescope.themes")
 
 local nmap = require("setup.keymap").nmap
 
@@ -22,7 +23,7 @@ telescope.setup {
 	},
 	extensions = {
 		file_browser = {
-			theme = "dropdown",
+			-- theme = "dropdown",
 			-- disables netrw and use telescope-file-browser in its place
 			hijack_netrw = true,
 			mappings = {
@@ -50,31 +51,33 @@ telescope.setup {
 	},
 }
 
+local merge_tables = require("setup.helpers").merge_tables
+
 require("setup.helpers").set_keymaps(nmap, {
 	{ ';f',
 		function()
-			builtin.find_files({
+			builtin.find_files(merge_tables(themes.get_ivy(), {
 				no_ignore = false,
 				hidden = true
-			})
+			}))
 		end },
 	{ ';g', function()
-		builtin.live_grep()
+		builtin.live_grep(themes.get_ivy())
 	end },
 	{ '\\\\', function()
-		builtin.buffers()
+		builtin.buffers(themes.get_ivy())
 	end },
 	{ ';t', function()
-		builtin.help_tags()
+		builtin.help_tags(themes.get_ivy())
 	end },
 	{ ';;', function()
-		builtin.resume()
+		builtin.resume(themes.get_ivy())
 	end },
 	{ ';e', function()
-		builtin.diagnostics()
+		builtin.diagnostics(themes.get_ivy())
 	end },
 	{ ";b", function()
-		telescope.extensions.file_browser.file_browser({
+		telescope.extensions.file_browser.file_browser(merge_tables(themes.get_ivy(), {
 			path = "%:p:h",
 			cwd = telescope_buffer_dir(),
 			respect_gitignore = false,
@@ -83,6 +86,9 @@ require("setup.helpers").set_keymaps(nmap, {
 			previewer = false,
 			initial_mode = "normal",
 			layout_config = { height = 40 }
-		})
+		}))
 	end },
+	{ ";h", function()
+		telescope.extensions.harpoon.marks(themes.get_ivy())
+	end }
 })

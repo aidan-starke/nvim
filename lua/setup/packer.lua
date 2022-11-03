@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
 	use 'j-hui/fidget.nvim' -- Visual LSP progress
 	use 'ray-x/lsp_signature.nvim' -- LSP signature help
 	use 'L3MON4D3/LuaSnip' -- Snippets
-	use 'kdheepak/lazygit.nvim' -- Visual git integration
+	use 'kdheepak/lazygit.nvim' -- Visual git
 	use 'nvim-telescope/telescope-file-browser.nvim' -- File browser
 	use 'windwp/nvim-autopairs' -- Auto brackets
 	use 'windwp/nvim-ts-autotag' -- Auto html tags

@@ -27,7 +27,6 @@ require("setup.helpers").set_keymaps(nnoremap, {
 	{ "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>" },
 	{ "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>" },
 	{ "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<cr>" },
-	{ "<leader>ht", "<cmd>Telescope harpoon marks<cr>" },
 	{ "<leader>h1", "<cmd>lua require('harpoon.ui').nav_file(1) <cr>" },
 	{ "<leader>h2", "<cmd>lua require('harpoon.ui').nav_file(2) <cr>" },
 	{ "<leader>h3", "<cmd>lua require('harpoon.ui').nav_file(3) <cr>" },
