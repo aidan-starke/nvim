@@ -48,7 +48,6 @@ return require('packer').startup(function(use)
 	} -- File tree
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		commit = "47ffd0dfc5500a7c48d1b4c2a01949f5d6a041f2",
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	} -- Treesitter
 	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
