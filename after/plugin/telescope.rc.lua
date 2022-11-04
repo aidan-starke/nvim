@@ -41,6 +41,9 @@ telescope.setup {
 				},
 			},
 		},
+		dap = {
+			theme = themes.get_ivy(),
+		},
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
 			override_generic_sorter = true, -- override the generic sorter
@@ -90,5 +93,17 @@ require("setup.helpers").set_keymaps(nmap, {
 	end },
 	{ ";h", function()
 		telescope.extensions.harpoon.marks(themes.get_ivy())
+	end },
+	{ ';db', function()
+		telescope.extensions.dap.list_breakpoints(themes.get_ivy())
+	end },
+	{ ';dc', function()
+		telescope.extensions.dap.commands(themes.get_ivy())
+	end },
+	{ ';dv', function()
+		telescope.extensions.dap.variables(themes.get_ivy())
+	end },
+	{ ';df', function()
+		telescope.extensions.dap.frames(themes.get_ivy())
 	end }
 })

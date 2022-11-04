@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
 	use 'EdenEast/nightfox.nvim' -- nightfox colorscheme
 	use 'feline-nvim/feline.nvim' -- Statusline
 	use 'kyazdani42/nvim-web-devicons' -- Icons
-	use 'nvim-lua/plenary.nvim' -- Common utilities
 	use 'onsails/lspkind-nvim' -- vscode-like pictograms
 	use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
 	use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
@@ -18,7 +17,6 @@ return require('packer').startup(function(use)
 	use 'j-hui/fidget.nvim' -- Visual LSP progress
 	use 'ray-x/lsp_signature.nvim' -- LSP signature help
 	use 'L3MON4D3/LuaSnip' -- Snippets
-	use 'kdheepak/lazygit.nvim' -- Visual git
 	use 'nvim-telescope/telescope-file-browser.nvim' -- File browser
 	use 'windwp/nvim-autopairs' -- Auto brackets
 	use 'windwp/nvim-ts-autotag' -- Auto html tags
@@ -39,7 +37,6 @@ return require('packer').startup(function(use)
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
 	use 'mbbill/undotree' -- Undo history
 	use 'mfussenegger/nvim-dap' -- Debugging
-	use 'rcarriga/nvim-dap-ui' -- Debugging UI
 	use 'theHamsta/nvim-dap-virtual-text' -- Debugging virtual text
 	use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end } -- Window management
 	use {
@@ -55,9 +52,15 @@ return require('packer').startup(function(use)
 	end } -- Popup windows
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+		requires = {
+			{ "nvim-lua/plenary.nvim" }, -- Common utils
+			{ "kdheepak/lazygit.nvim" }, -- Visual Git integration
+			{ "nvim-telescope/telescope-dap.nvim" } -- Debugging integration
+		},
 		config = function()
-			require("telescope").load_extension("lazygit")
+			local telescope = require("telescope")
+			telescope.load_extension("dap")
+			telescope.load_extension("lazygit")
 		end,
 	}) -- File search
 	use({
