@@ -155,6 +155,10 @@ for _, lsp in ipairs(servers) do
 				end,
 			},
 			server = merge_opts({
+				on_attach = function(client, bufnr)
+					on_attach(client, bufnr)
+					enable_format_on_save(client, bufnr)
+				end,
 				settings = {
 					["rust-analyzer"] = {
 						lens = {
