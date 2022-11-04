@@ -76,6 +76,9 @@ require("setup.helpers").set_keymaps(nmap, {
 	{ ';d', function()
 		builtin.diagnostics(themes.get_ivy())
 	end },
+	{ ';z', function()
+		builtin.current_buffer_fuzzy_find(themes.get_ivy())
+	end },
 	{ ";b", function()
 		telescope.extensions.file_browser.file_browser(merge_tables(themes.get_ivy(), {
 			path = "%:p:h",

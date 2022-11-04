@@ -6,13 +6,13 @@ if not status_two then return end
 
 daptext.setup({})
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
+dap.listeners.after.event_initialized["yeet"] = function()
 	dap.repl.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
+dap.listeners.before.event_terminated["yeet"] = function()
 	dap.repl.close()
 end
-dap.listeners.before.event_exited["dapui_config"] = function()
+dap.listeners.before.event_exited["yeet"] = function()
 	dap.repl.close()
 end
 

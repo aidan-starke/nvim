@@ -18,11 +18,11 @@ return require('packer').startup(function(use)
 	use 'j-hui/fidget.nvim' -- Visual LSP progress
 	use 'ray-x/lsp_signature.nvim' -- LSP signature help
 	use 'L3MON4D3/LuaSnip' -- Snippets
-	use 'nvim-telescope/telescope-file-browser.nvim' -- File browser
 	use 'windwp/nvim-autopairs' -- Auto brackets
 	use 'windwp/nvim-ts-autotag' -- Auto html tags
 	use 'norcalli/nvim-colorizer.lua' -- Color highlight
 	use 'github/copilot.vim' -- Copilot
+	use 'kdheepak/lazygit.nvim' -- Visual Git integration
 	use 'sbdchd/neoformat' -- Code formatting
 	use 'mvllow/modes.nvim' -- Highlight line based on mode
 	use 'sudormrfbin/cheatsheet.nvim' -- Commands cheatsheet
@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
 	use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 	use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 	use 'stevearc/aerial.nvim' -- Code outline window
-	use 'RRethy/vim-illuminate' -- Highlight word under cursor
+	use 'RRethy/vim-illuminate' -- Highlight and find other occurences of word under cursor
 	use 'lewis6991/impatient.nvim' -- Speed up startup
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
 	use 'mbbill/undotree' -- Undo history
@@ -47,20 +47,18 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-	} -- Treesitter
+	} -- Treesitter ( syntax highlighting etc.. )
 	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
 		require("toggleterm").setup()
 	end } -- Popup windows
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
-			{ "kdheepak/lazygit.nvim" }, -- Visual Git integration
-			{ "nvim-telescope/telescope-dap.nvim" } -- Debugging integration
+			{ "nvim-telescope/telescope-dap.nvim" }, -- Debugging integration
+			{ "nvim-telescope/telescope-file-browser.nvim" } -- File browser
 		},
 		config = function()
-			local telescope = require("telescope")
-			telescope.load_extension("dap")
-			telescope.load_extension("lazygit")
+			require("telescope").load_extension("dap")
 		end,
 	}) -- File search
 	use({
