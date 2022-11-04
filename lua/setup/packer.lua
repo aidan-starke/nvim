@@ -2,6 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
+	use "nvim-lua/plenary.nvim" -- Common utils
 	use 'EdenEast/nightfox.nvim' -- nightfox colorscheme
 	use 'feline-nvim/feline.nvim' -- Statusline
 	use 'kyazdani42/nvim-web-devicons' -- Icons
@@ -53,7 +54,6 @@ return require('packer').startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
-			{ "nvim-lua/plenary.nvim" }, -- Common utils
 			{ "kdheepak/lazygit.nvim" }, -- Visual Git integration
 			{ "nvim-telescope/telescope-dap.nvim" } -- Debugging integration
 		},

@@ -41,9 +41,6 @@ telescope.setup {
 				},
 			},
 		},
-		dap = {
-			theme = themes.get_ivy(),
-		},
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
 			override_generic_sorter = true, -- override the generic sorter
