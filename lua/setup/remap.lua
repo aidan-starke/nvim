@@ -7,8 +7,6 @@ require("setup.helpers").set_keymaps(nnoremap,
 
 		-- Select All
 		{ "<leader>sa", "gg<S-v>G" },
-		-- Redo
-		{ "<leader>re", "<cmd>redo<CR>" },
 
 		-- Focus
 		{ "<leader>st", "<cmd>FocusToggle<CR>" },
@@ -42,5 +40,7 @@ require("setup.helpers").set_keymaps(nnoremap,
 
 		-- Undotree
 		{ "<leader>ut", "<cmd>UndotreeToggle<CR>" },
+		-- Redo
+		{ "U", "<cmd>redo<CR>" },
 	}
 )
