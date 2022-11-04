@@ -73,7 +73,7 @@ require("setup.helpers").set_keymaps(nmap, {
 	{ ';;', function()
 		builtin.resume(themes.get_ivy())
 	end },
-	{ ';e', function()
+	{ ';d', function()
 		builtin.diagnostics(themes.get_ivy())
 	end },
 	{ ";b", function()
