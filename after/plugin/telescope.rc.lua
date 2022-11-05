@@ -50,6 +50,9 @@ telescope.setup {
 	},
 }
 
+telescope.load_extension("fzf")
+telescope.load_extension("dap")
+
 local ivy_theme = require("telescope.themes").get_ivy()
 local merge_tables = require("setup.helpers").merge_tables
 

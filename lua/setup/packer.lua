@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use "nvim-lua/plenary.nvim" -- Common utils
+	use 'nvim-lua/plenary.nvim' -- Common utils
 	use 'EdenEast/nightfox.nvim' -- nightfox colorscheme
 	use 'feline-nvim/feline.nvim' -- Statusline
 	use 'kyazdani42/nvim-web-devicons' -- Icons
@@ -39,7 +39,8 @@ return require('packer').startup(function(use)
 	use 'mbbill/undotree' -- Undo history
 	use 'mfussenegger/nvim-dap' -- Debugging
 	use 'theHamsta/nvim-dap-virtual-text' -- Debugging virtual text
-	use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end } -- Window management
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	use { 'beauwilliams/focus.nvim', config = function() require('focus').setup() end } -- Window management
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
@@ -48,25 +49,23 @@ return require('packer').startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	} -- Treesitter ( syntax highlighting etc.. )
-	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-		require("toggleterm").setup()
+	use { 'akinsho/toggleterm.nvim', tag = '*', config = function()
+		require('toggleterm').setup()
 	end } -- Popup windows
 	use({
-		"nvim-telescope/telescope.nvim",
+		'nvim-telescope/telescope.nvim',
 		requires = {
-			{ "nvim-telescope/telescope-dap.nvim" }, -- Debugging integration
-			{ "nvim-telescope/telescope-file-browser.nvim" }, -- File browser
+			{ 'nvim-telescope/telescope-dap.nvim' }, -- Debugging integration
+			{ 'nvim-telescope/telescope-fzf-native.nvim' }, -- Fuzzy finding
+			{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
 		},
-		config = function()
-			require("telescope").load_extension("dap")
-		end,
 	}) -- File search
 	use({
-		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
+		'iamcco/markdown-preview.nvim',
+		run = function() vim.fn['mkdp#util#install']() end,
 	}) -- Markdown preview
 	use {
-		"acksld/nvim-neoclip.lua",
+		'acksld/nvim-neoclip.lua',
 		requires = {
 			{ 'kkharji/sqlite.lua', module = 'sqlite' },
 		},
