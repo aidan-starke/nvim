@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-telescope/telescope-dap.nvim" }, -- Debugging integration
-			{ "nvim-telescope/telescope-file-browser.nvim" } -- File browser
+			{ "nvim-telescope/telescope-file-browser.nvim" }, -- File browser
 		},
 		config = function()
 			require("telescope").load_extension("dap")
@@ -65,4 +65,10 @@ return require('packer').startup(function(use)
 		"iamcco/markdown-preview.nvim",
 		run = function() vim.fn["mkdp#util#install"]() end,
 	}) -- Markdown preview
+	use {
+		"acksld/nvim-neoclip.lua",
+		requires = {
+			{ 'kkharji/sqlite.lua', module = 'sqlite' },
+		},
+	} -- Clipboard manager
 end)

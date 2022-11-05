@@ -3,7 +3,6 @@ if (not status) then return end
 
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
-local themes = require("telescope.themes")
 
 local nmap = require("setup.keymap").nmap
 
@@ -51,36 +50,37 @@ telescope.setup {
 	},
 }
 
+local ivy_theme = require("telescope.themes").get_ivy()
 local merge_tables = require("setup.helpers").merge_tables
 
 require("setup.helpers").set_keymaps(nmap, {
 	{ ';f',
 		function()
-			builtin.find_files(merge_tables(themes.get_ivy(), {
-				no_ignore = false,
+			builtin.find_files(merge_tables(ivy_theme, {
+				no_ignore = true,
 				hidden = true
 			}))
 		end },
 	{ ';g', function()
-		builtin.live_grep(themes.get_ivy())
+		builtin.live_grep(ivy_theme)
 	end },
 	{ '\\\\', function()
-		builtin.buffers(themes.get_ivy())
+		builtin.buffers(ivy_theme)
 	end },
 	{ ';t', function()
-		builtin.help_tags(themes.get_ivy())
+		builtin.help_tags(ivy_theme)
 	end },
 	{ ';;', function()
-		builtin.resume(themes.get_ivy())
+		builtin.resume(ivy_theme)
 	end },
 	{ ';d', function()
-		builtin.diagnostics(themes.get_ivy())
+		builtin.diagnostics(ivy_theme)
 	end },
 	{ ';z', function()
-		builtin.current_buffer_fuzzy_find(themes.get_ivy())
+		builtin.current_buffer_fuzzy_find(ivy_theme)
 	end },
 	{ ";b", function()
-		telescope.extensions.file_browser.file_browser(merge_tables(themes.get_ivy(), {
+		telescope.extensions.file_browser.file_browser(merge_tables(ivy_theme, {
 			path = "%:p:h",
 			cwd = telescope_buffer_dir(),
 			respect_gitignore = false,
@@ -92,18 +92,21 @@ require("setup.helpers").set_keymaps(nmap, {
 		}))
 	end },
 	{ ";h", function()
-		telescope.extensions.harpoon.marks(themes.get_ivy())
+		telescope.extensions.harpoon.marks(ivy_theme)
 	end },
 	{ ';db', function()
-		telescope.extensions.dap.list_breakpoints(themes.get_ivy())
+		telescope.extensions.dap.list_breakpoints(ivy_theme)
 	end },
 	{ ';dc', function()
-		telescope.extensions.dap.commands(themes.get_ivy())
+		telescope.extensions.dap.commands(ivy_theme)
 	end },
 	{ ';dv', function()
-		telescope.extensions.dap.variables(themes.get_ivy())
+		telescope.extensions.dap.variables(ivy_theme)
 	end },
 	{ ';df', function()
-		telescope.extensions.dap.frames(themes.get_ivy())
+		telescope.extensions.dap.frames(ivy_theme)
+	end },
+	{ ';c', function()
+		telescope.load_extension('neoclip').default(ivy_theme)
 	end }
 })
