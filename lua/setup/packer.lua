@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
 	use 'theHamsta/nvim-dap-virtual-text' -- Debugging virtual text
 	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 	use { 'beauwilliams/focus.nvim', config = function() require('focus').setup() end } -- Window management
+	use { 'karb94/neoscroll.nvim', config = function() require('neoscroll').setup() end } -- Smooth scrolling
 	use {
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
