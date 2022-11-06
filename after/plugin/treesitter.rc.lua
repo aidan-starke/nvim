@@ -3,6 +3,7 @@ if (not status) then return end
 ts.setup {
 	ensure_installed = {
 		"lua",
+		"tsx",
 		"javascript",
 		"typescript",
 		"solidity",
