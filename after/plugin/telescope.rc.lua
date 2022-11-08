@@ -1,45 +1,15 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 
-local actions = require('telescope.actions')
-local builtin = require("telescope.builtin")
-
-local nmap = require("setup.keymap").nmap
-
-local function telescope_buffer_dir()
-	return vim.fn.expand('%:p:h')
-end
-
-local fb_actions = require "telescope".extensions.file_browser.actions
-
 telescope.setup {
 	defaults = {
 		mappings = {
 			n = {
-				["q"] = actions.close
+				["q"] = require('telescope.actions').close
 			},
 		},
 	},
 	extensions = {
-		file_browser = {
-			-- theme = "dropdown",
-			-- disables netrw and use telescope-file-browser in its place
-			hijack_netrw = true,
-			mappings = {
-				-- your custom insert mode mappings
-				["i"] = {
-					["<C-w>"] = function() vim.cmd('normal vbd') end,
-				},
-				["n"] = {
-					-- your custom normal mode mappings
-					["N"] = fb_actions.create,
-					["h"] = fb_actions.goto_parent_dir,
-					["/"] = function()
-						vim.cmd('startinsert')
-					end
-				},
-			},
-		},
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
 			override_generic_sorter = true, -- override the generic sorter
@@ -50,66 +20,66 @@ telescope.setup {
 	},
 }
 
-telescope.load_extension("fzf")
 telescope.load_extension("dap")
+telescope.load_extension("fzf")
 
-local ivy_theme = require("telescope.themes").get_ivy()
-local merge_tables = require("setup.helpers").merge_tables
+local nmap = require("setup.keymap").nmap
+local builtin = require("telescope.builtin")
 
 require("setup.helpers").set_keymaps(nmap, {
 	{ ';f',
 		function()
-			builtin.find_files(merge_tables(ivy_theme, {
+			builtin.find_files({
 				no_ignore = true,
 				hidden = true
-			}))
+			})
 		end },
 	{ ';g', function()
-		builtin.live_grep(ivy_theme)
+		builtin.live_grep()
 	end },
 	{ '\\\\', function()
-		builtin.buffers(ivy_theme)
+		builtin.buffers()
 	end },
 	{ ';t', function()
-		builtin.help_tags(ivy_theme)
+		builtin.help_tags()
 	end },
 	{ ';;', function()
-		builtin.resume(ivy_theme)
+		builtin.resume()
 	end },
 	{ ';d', function()
-		builtin.diagnostics(ivy_theme)
+		builtin.diagnostics()
 	end },
 	{ ';z', function()
-		builtin.current_buffer_fuzzy_find(ivy_theme)
+		builtin.current_buffer_fuzzy_find()
 	end },
 	{ ";b", function()
-		telescope.extensions.file_browser.file_browser(merge_tables(ivy_theme, {
+		telescope.extensions.file_browser.file_browser({
 			path = "%:p:h",
-			cwd = telescope_buffer_dir(),
+			cwd = vim.fn.expand('%:p:h'),
 			respect_gitignore = false,
 			hidden = true,
 			grouped = true,
 			previewer = false,
 			initial_mode = "normal",
 			layout_config = { height = 40 }
-		}))
+		})
 	end },
 	{ ";h", function()
-		telescope.extensions.harpoon.marks(ivy_theme)
+		telescope.extensions.harpoon.marks()
 	end },
 	{ ';db', function()
-		telescope.extensions.dap.list_breakpoints(ivy_theme)
+		telescope.extensions.dap.list_breakpoints()
 	end },
 	{ ';dc', function()
-		telescope.extensions.dap.commands(ivy_theme)
+		telescope.extensions.dap.commands()
 	end },
 	{ ';dv', function()
-		telescope.extensions.dap.variables(ivy_theme)
+		telescope.extensions.dap.variables()
 	end },
 	{ ';df', function()
-		telescope.extensions.dap.frames(ivy_theme)
+		telescope.extensions.dap.frames()
 	end },
 	{ ';c', function()
-		telescope.load_extension('neoclip').default(ivy_theme)
+		telescope.load_extension('neoclip').default()
 	end }
 })
