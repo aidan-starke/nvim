@@ -1,7 +1,7 @@
 local M = {}
 
-M.merge_tables = function(one, two)
-	return vim.tbl_extend('force', one, two)
+M.merge_tables = function(...)
+	return vim.tbl_extend('force', ...)
 end
 
 M.set_keymaps = function(set_keymap, pairs, opts)

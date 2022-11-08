@@ -36,7 +36,7 @@ Toggle_indent = function()
 	if is_enabled then
 		is_enabled = false
 
-		filetype_exclude = merge_tables(filetype_exclude, { vim.bo.filetype })
+		filetype_exclude = merge_tables({ vim.bo.filetype }, filetype_exclude)
 		opts = merge_tables(opts, {
 			filetype_exclude = filetype_exclude,
 		})
