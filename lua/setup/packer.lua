@@ -47,6 +47,12 @@ return require('packer').startup(function(use)
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
 	} -- File tree
 	use {
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	} -- Git signs (shows git branch in feline)
+	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	} -- Treesitter ( syntax highlighting etc.. )

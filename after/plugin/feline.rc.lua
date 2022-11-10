@@ -1,5 +1,5 @@
-local status, feline = pcall(require, "feline")
-if (not status) then return end
+local ok, feline = pcall(require, "feline")
+if (not ok) then return end
 
 local fmt = string.format
 
