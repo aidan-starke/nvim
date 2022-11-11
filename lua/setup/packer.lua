@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
 	use 'mvllow/modes.nvim' -- Highlight line based on mode
 	use 'sudormrfbin/cheatsheet.nvim' -- Commands cheatsheet
 	use 'nat-418/boole.nvim' -- Toggle booleans, dates, etc
-	use 'ggandor/leap.nvim' -- Leap to a character
+	use 'phaazon/hop.nvim' -- Hop to a character (remaps `f` and `t`)
 	use 'ThePrimeagen/harpoon' -- Create and move between marks
 	use 'numToStr/Comment.nvim' -- Commenting shortcuts
 	use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
