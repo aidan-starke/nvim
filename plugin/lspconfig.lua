@@ -68,9 +68,6 @@ local on_attach = function(client, bufnr)
 			border = "double"
 		}
 	}, bufnr)
-
-	-- Colorscheme
-	require("setup.nightfox").apply_overrides(vim.bo.filetype)
 end
 
 local handlers = {
