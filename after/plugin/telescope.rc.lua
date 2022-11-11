@@ -14,19 +14,9 @@ telescope.setup {
 			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
 		}
 	},
-	extensions = {
-		fzf = {
-			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true, -- override the generic sorter
-			override_file_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
-		}
-	},
 }
 
 telescope.load_extension("dap")
-telescope.load_extension("fzf")
 
 local nmap = require("setup.keymap").nmap
 local builtin = require("telescope.builtin")
@@ -54,9 +44,6 @@ require("setup.helpers").set_keymaps(nmap, {
 	end },
 	{ ';d', function()
 		builtin.diagnostics(ivy_theme)
-	end },
-	{ ';z', function()
-		builtin.current_buffer_fuzzy_find(ivy_theme)
 	end },
 	{ ";b", function()
 		telescope.extensions.file_browser.file_browser(merge_tables({
