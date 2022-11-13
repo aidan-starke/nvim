@@ -20,3 +20,6 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.updatetime = 50
 
 vim.g.Illuminate_ftblacklist = { 'NvimTree' }
+
+vim.opt.wildmenu = true
+vim.opt.wildmode = { 'longest', 'full', 'full' }

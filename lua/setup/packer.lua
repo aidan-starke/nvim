@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup({
+return require('packer').startup(
 	function(use)
 		use 'wbthomason/packer.nvim'
 
@@ -50,7 +50,7 @@ return require('packer').startup({
 
 		use 'nat-418/boole.nvim' -- Toggle booleans, dates, etc
 
-		use 'phaazon/hop.nvim' -- Hop to a character (remaps `f` and `t`)
+		use 'phaazon/hop.nvim' -- Hop to a character
 
 		use 'ThePrimeagen/harpoon' -- Create and move between marks
 
@@ -67,6 +67,8 @@ return require('packer').startup({
 		use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
 
 		use 'mbbill/undotree' -- Undo history
+
+		use 'gelguy/wilder.nvim' -- Command line hints
 
 		use {
 			'nvim-tree/nvim-tree.lua',
@@ -140,10 +142,5 @@ return require('packer').startup({
 				require('nvim-treesitter.install').update({ with_sync = true })
 			end,
 		} -- Treesitter ( syntax highlighting etc.. )
-	end,
-	config = {
-		display = {
-			open_fn = require('packer.util').float
-		}
-	}
-})
+	end
+)
