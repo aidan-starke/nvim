@@ -88,7 +88,8 @@ local servers = {
 	"sumneko_lua",
 	"tsserver",
 	"solidity",
-	"rust_analyzer"
+	"rust_analyzer",
+	"prismals"
 }
 
 local opts = {}
@@ -105,7 +106,7 @@ for _, lsp in ipairs(servers) do
 	end
 
 	if lsp == "sumneko_lua" then
-		local lua_opts = {
+		opts = merge_opts({
 			on_attach = function(client, bufnr)
 				on_attach(client, bufnr)
 				enable_format_on_save(client, bufnr)
@@ -124,22 +125,19 @@ for _, lsp in ipairs(servers) do
 					},
 				},
 			},
-		}
-		opts = merge_opts(lua_opts)
+		})
 	end
 
 	if lsp == "tailwindcss" then
-		local tailwind_opts = {
+		opts = merge_opts({
 			filetypes = { "javascriptreact", "typescriptreact", "svelte" }
-		}
-		opts = merge_opts(tailwind_opts)
+		})
 	end
 
 	if lsp == "solidity" then
-		local solidity_opts = {
+		opts = merge_opts({
 			cmd = { "solidity-ls", "--stdio" },
-		}
-		opts = merge_opts(solidity_opts)
+		})
 	end
 
 	if lsp == "rust_analyzer" then
@@ -172,7 +170,18 @@ for _, lsp in ipairs(servers) do
 		goto continue
 	end
 
+	if lsp == "prismals" then
+		opts = merge_opts({
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				enable_format_on_save(client, bufnr)
+			end,
+
+		})
+	end
+
 	nvim_lsp[lsp].setup(opts)
+
 	::continue::
 end
 
