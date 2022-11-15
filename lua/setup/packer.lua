@@ -60,8 +60,6 @@ return require('packer').startup(
 
 		use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 
-		use 'stevearc/aerial.nvim' -- Code outline window
-
 		use 'RRethy/vim-illuminate' -- Highlight and find other occurences of word under cursor
 
 		use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
