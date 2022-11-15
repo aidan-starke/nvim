@@ -10,30 +10,6 @@ return require('packer').startup(
 
 		use 'kyazdani42/nvim-web-devicons' -- Icons
 
-		use 'onsails/lspkind-nvim' -- vscode-like pictograms
-
-		use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-
-		use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-
-		use 'hrsh7th/nvim-cmp' -- Completion
-
-		use 'neovim/nvim-lspconfig' -- LSP
-
-		use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-
-		use 'williamboman/mason.nvim' -- LSP manager
-
-		use 'williamboman/mason-lspconfig.nvim'
-
-		use 'simrat39/rust-tools.nvim' -- Rust tools
-
-		use 'j-hui/fidget.nvim' -- Visual LSP progress
-
-		use 'ray-x/lsp_signature.nvim' -- LSP signature help
-
-		use 'L3MON4D3/LuaSnip' -- Snippets
-
 		use 'windwp/nvim-autopairs' -- Auto brackets
 
 		use 'windwp/nvim-ts-autotag' -- Auto html tags
@@ -67,6 +43,21 @@ return require('packer').startup(
 		use 'mbbill/undotree' -- Undo history
 
 		use 'gelguy/wilder.nvim' -- Command line hints
+
+		use {
+			'hrsh7th/nvim-cmp',
+			'L3MON4D3/LuaSnip',
+			'j-hui/fidget.nvim',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-nvim-lsp',
+			'onsails/lspkind-nvim',
+			'neovim/nvim-lspconfig',
+			'williamboman/mason.nvim',
+			'simrat39/rust-tools.nvim',
+			'ray-x/lsp_signature.nvim',
+			'jose-elias-alvarez/null-ls.nvim',
+			'williamboman/mason-lspconfig.nvim',
+		} -- LSP
 
 		use {
 			'nvim-tree/nvim-tree.lua',
