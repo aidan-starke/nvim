@@ -89,7 +89,8 @@ local servers = {
 	"tsserver",
 	"solidity",
 	"rust_analyzer",
-	"prismals"
+	"prismals",
+	"yamlls"
 }
 
 local opts = {}
