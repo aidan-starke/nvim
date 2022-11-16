@@ -3,7 +3,7 @@ local nnoremap = require("setup.keymap").nnoremap
 require("setup.helpers").set_keymaps(nnoremap,
 	{
 		-- Toggle FileTree
-		{ "<leader>ft", "<cmd>NvimTreeToggle<CR>" },
+		{ "<leader>nt", "<cmd>NvimTreeToggle<CR>" },
 
 		-- Select All
 		{ "<leader>sa", "gg<S-v>G" },
