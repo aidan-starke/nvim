@@ -3,7 +3,7 @@ if (not status) then return end
 
 boole.setup({
 	mappings = {
-		increment = '<C-a>',
-		decrement = '<C-x>'
+		increment = '<leader>bk',
+		decrement = '<leader>bj',
 	},
 })
