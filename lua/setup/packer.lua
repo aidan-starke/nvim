@@ -18,7 +18,7 @@ return require('packer').startup(
 
 		use 'github/copilot.vim' -- Copilot
 
-		use 'kdheepak/lazygit.nvim' -- Visual Git integration
+		use 'kdheepak/lazygit.nvim' -- Visual Git
 
 		use 'mvllow/modes.nvim' -- Highlight line based on mode
 
@@ -43,6 +43,10 @@ return require('packer').startup(
 		use 'mbbill/undotree' -- Undo history
 
 		use 'gelguy/wilder.nvim' -- Command line hints
+
+		use 'feline-nvim/feline.nvim' -- Statusline
+
+		use 'petertriho/nvim-scrollbar' -- Scrollbar
 
 		use {
 			'hrsh7th/nvim-cmp',
@@ -94,9 +98,12 @@ return require('packer').startup(
 		} -- Popup windows
 
 		use {
-			'feline-nvim/feline.nvim',
-			requires = 'lewis6991/gitsigns.nvim'
-		} -- Statusline
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require('gitsigns').setup()
+				require("scrollbar.handlers.gitsigns").setup()
+			end
+		} -- Git integration
 
 		use {
 			'mfussenegger/nvim-dap',
