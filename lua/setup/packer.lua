@@ -18,8 +18,6 @@ return require('packer').startup(
 
 		use 'github/copilot.vim' -- Copilot
 
-		use 'kdheepak/lazygit.nvim' -- Visual Git
-
 		use 'mvllow/modes.nvim' -- Highlight line based on mode
 
 		use 'sudormrfbin/cheatsheet.nvim' -- Commands cheatsheet
@@ -47,6 +45,10 @@ return require('packer').startup(
 		use 'feline-nvim/feline.nvim' -- Statusline
 
 		use 'petertriho/nvim-scrollbar' -- Scrollbar
+
+		use 'kdheepak/lazygit.nvim' -- Visual Git
+
+		use 'sindrets/diffview.nvim' -- Git diff
 
 		use {
 			'hrsh7th/nvim-cmp',
