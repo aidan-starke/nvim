@@ -52,6 +52,8 @@ return require('packer').startup(
 
 		use 'xorid/swap-split.nvim' -- Swap split buffers
 
+		use 'mattkubej/jest.nvim' -- Run Jest in nvim
+
 		use {
 			'hrsh7th/nvim-cmp',
 			'L3MON4D3/LuaSnip',
