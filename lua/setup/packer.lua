@@ -50,6 +50,8 @@ return require('packer').startup(
 
 		use 'sindrets/diffview.nvim' -- Git diff
 
+		use 'xorid/swap-split.nvim' -- Swap split buffers
+
 		use {
 			'hrsh7th/nvim-cmp',
 			'L3MON4D3/LuaSnip',
