@@ -7,14 +7,6 @@ vim.g.loaded_netrwPlugin = 1
 tree.setup({
 	sort_by = "case_sensitive",
 	hijack_cursor = true,
-	view = {
-		adaptive_size = true,
-		mappings = {
-			list = {
-				{ key = "u", action = "dir_up" },
-			},
-		},
-	},
 	renderer = {
 		group_empty = true,
 		icons = {
@@ -23,6 +15,11 @@ tree.setup({
 				file = false,
 			}
 		}
+	},
+	actions = {
+		open_file = {
+			quit_on_open = true,
+		},
 	},
 	update_focused_file = {
 		enable = true,
