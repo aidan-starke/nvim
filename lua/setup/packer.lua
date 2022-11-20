@@ -56,6 +56,7 @@ return require('packer').startup(
 			'hrsh7th/nvim-cmp',
 			'L3MON4D3/LuaSnip',
 			'j-hui/fidget.nvim',
+			'folke/neodev.nvim',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-nvim-lsp',
 			'onsails/lspkind-nvim',
