@@ -30,12 +30,6 @@ local on_attach = function(client, bufnr)
 			{ 'li', '<cmd>LspInfo<CR>' },
 			{ 'la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
 			{ 'lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-			-- Aerial
-			{ ';a', '<cmd>AerialToggle<CR>' },
-			{ '{', '<cmd>AerialNext<CR>' },
-			{ '}', '<cmd>AerialPrev<CR>' },
-			{ ']]', '<cmd>lua require("aerial").next_up()<CR>' },
-			{ '[[', '<cmd>lua require("aerial).prev_up()<CR>' }
 		}, { noremap = true, silent = true })
 
 	-- Diagnostic hover

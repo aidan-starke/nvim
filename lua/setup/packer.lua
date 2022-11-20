@@ -12,8 +12,6 @@ return require('packer').startup(
 
 		use 'windwp/nvim-autopairs' -- Auto brackets
 
-		use 'windwp/nvim-ts-autotag' -- Auto html tags
-
 		use 'norcalli/nvim-colorizer.lua' -- Color highlight
 
 		use 'github/copilot.vim' -- Copilot
@@ -102,6 +100,12 @@ return require('packer').startup(
 				require('toggleterm').setup()
 			end
 		} -- Popup windows
+
+		use { 'windwp/nvim-ts-autotag',
+			config = function()
+				require('nvim-ts-autotag').setup()
+			end
+		} -- Auto html tags
 
 		use {
 			"lewis6991/gitsigns.nvim",

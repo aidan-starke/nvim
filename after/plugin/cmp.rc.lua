@@ -1,6 +1,5 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
-local lspkind = require 'lspkind'
 
 if (not cmp) then return end
 cmp.setup({
@@ -24,7 +23,7 @@ cmp.setup({
 		{ name = 'buffer' },
 	}),
 	formatting = {
-		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
+		format = require('lspkind').cmp_format({ with_text = false, maxwidth = 50 })
 	}
 })
 
