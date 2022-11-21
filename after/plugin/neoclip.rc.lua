@@ -1,5 +1,5 @@
 local status, neoclip = pcall(require, "neoclip")
-if not status then return end
+if (not status) then return end
 
 local function is_whitespace(line)
 	return vim.fn.match(line, [[^\s*$]]) ~= -1

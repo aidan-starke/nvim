@@ -1,7 +1,6 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 
-if (not cmp) then return end
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -9,9 +8,8 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<C-d>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-d>'] = cmp.mapping.scroll_docs(4),
+		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-e>'] = cmp.mapping.close(),
 		['<CR>'] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,

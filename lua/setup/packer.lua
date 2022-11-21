@@ -26,8 +26,6 @@ return require('packer').startup(
 
 		use 'ThePrimeagen/harpoon' -- Create and move between marks
 
-		use 'numToStr/Comment.nvim' -- Commenting shortcuts
-
 		use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 
 		use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
@@ -84,6 +82,12 @@ return require('packer').startup(
 				require('focus').setup()
 			end
 		} -- Window management
+
+		use { 'numToStr/Comment.nvim',
+			config = function()
+				require('Comment').setup()
+			end
+		} -- Commenting shortcuts
 
 		use {
 			'karb94/neoscroll.nvim',

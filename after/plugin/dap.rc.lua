@@ -1,8 +1,8 @@
 local status_one, dap = pcall(require, "dap")
-if not status_one then return end
+if (not status_one) then return end
 
 local status_two, daptext = pcall(require, "nvim-dap-virtual-text")
-if not status_two then return end
+if (not status_two) then return end
 
 daptext.setup({})
 

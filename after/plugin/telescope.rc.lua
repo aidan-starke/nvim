@@ -13,8 +13,8 @@ telescope.setup {
 
 telescope.load_extension("dap")
 
-local nmap = require("setup.keymap").nmap
 local builtin = require("telescope.builtin")
+local nnoremap = require("setup.keymap").nnoremap
 local ivy_theme = require("telescope.themes").get_ivy()
 local merge_tables = require("setup.helpers").merge_tables
 
@@ -23,7 +23,7 @@ local normal_mode = merge_tables({
 	initial_mode = "normal",
 }, ivy_theme)
 
-require("setup.helpers").set_keymaps(nmap, {
+require("setup.helpers").set_keymaps(nnoremap, {
 	{ ';f',
 		function()
 			builtin.find_files(merge_tables({
@@ -67,7 +67,6 @@ require("setup.helpers").set_keymaps(nmap, {
 				hidden = true,
 				grouped = true,
 				previewer = false,
-				initial_mode = "normal",
 				layout_config = { height = 40 }
 			}, ivy_theme))
 		end
