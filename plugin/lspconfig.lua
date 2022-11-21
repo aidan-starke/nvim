@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
 			vim.diagnostic.open_float(nil, {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "double",
+				border = "rounded",
 				source = "always",
 				prefix = " ",
 				scope = "cursor",
@@ -64,13 +64,13 @@ local on_attach = function(client, bufnr)
 		hint_scheme = "String",
 		floating_window = false,
 		handler_opts = {
-			border = "double"
+			border = "rounded",
 		}
 	}, bufnr)
 end
 
 local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "double" }),
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
 	["textDocument/publishDiagnostics"] = vim.lsp.with(
 		vim.lsp.diagnostic.on_publish_diagnostics, {
 		underline = true,
