@@ -46,9 +46,7 @@ return require('packer').startup(
 
 		use 'kdheepak/lazygit.nvim' -- Visual Git
 
-		use 'sindrets/diffview.nvim' -- Git diff
-
-		use 'xorid/swap-split.nvim' -- Swap split buffers
+		use 'xorid/swap-split.nvim' -- Swap split windows
 
 		use 'mattkubej/jest.nvim' -- Run Jest in nvim
 
@@ -101,6 +99,12 @@ return require('packer').startup(
 				require('toggleterm').setup()
 			end
 		} -- Popup windows
+
+		use { 'akinsho/git-conflict.nvim',
+			config = function()
+				require('git-conflict').setup()
+			end
+		} -- Git conflicts
 
 		use { 'windwp/nvim-ts-autotag',
 			config = function()
