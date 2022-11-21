@@ -1,38 +1,27 @@
-local status, indent = pcall(require, 'indent_blankline')
+local status, blankline = pcall(require, 'indent_blankline')
 if (not status) then return end
 
 vim.cmd [[highlight IndentBlanklineIndent guifg=#3b4252 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#f6aa1c gui=nocombine]]
 
+local opts = {
+	char = '│',
+	buftype_exclude = { 'terminal' },
+	show_first_blankline_level = false,
+	char_highlight_list = {
+		"IndentBlanklineIndent",
+	},
+	show_current_context = true,
+}
+
+blankline.setup(opts)
+
 local is_enabled = true
 local merge_tables = require("setup.helpers").merge_tables
 
-Toggle_indent = function()
-	local filetype_exclude = {
-		'lua',
-		'packer',
-		'help',
-		'NvimTree',
-		'gitcommit',
-		'markdown',
-		'json',
-		'text',
-		'log',
-		'javascript',
-		'javascriptreact',
-		'typescript',
-		'typescriptreact',
-		'rust'
-	}
-	local opts = {
-		char = '│',
-		buftype_exclude = { 'terminal' },
-		show_first_indent_level = false,
-		char_highlight_list = {
-			"IndentBlanklineIndent",
-		},
-		show_current_context = true,
-	}
+require("setup.keymap").nnoremap('<leader>bl', function()
+	local filetype_exclude = {}
+
 	if is_enabled then
 		is_enabled = false
 
@@ -51,9 +40,5 @@ Toggle_indent = function()
 		})
 	end
 
-	indent.setup(opts)
-end
-
-Toggle_indent()
-
-require("setup.keymap").nnoremap('<leader>ti', '<cmd>lua Toggle_indent()<CR>', { silent = true })
+	blankline.setup(opts)
+end, { silent = true })
