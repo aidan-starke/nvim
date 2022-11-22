@@ -10,8 +10,9 @@ nightfox.setup({
 		transparent = true,
 		styles = {
 			comments = "italic",
-			types = "italic",
-		}
+			types = "bold,italic",
+			conditionals = "italic",
+		},
 	},
 	specs = {
 		nightfox = {
