@@ -28,5 +28,6 @@ illuminate.configure {
 	modes_allowlist = {},
 	providers_regex_syntax_denylist = {},
 	providers_regex_syntax_allowlist = {},
+	large_file_cutoff = 10000,
 	under_cursor = true,
 }

@@ -19,8 +19,23 @@ blankline.setup(opts)
 local is_enabled = true
 local merge_tables = require("setup.helpers").merge_tables
 
-require("setup.keymap").nnoremap('<leader>bl', function()
-	local filetype_exclude = {}
+local function toggle_blankline()
+	local filetype_exclude = {
+		'lua',
+		'packer',
+		'help',
+		'NvimTree',
+		'gitcommit',
+		'markdown',
+		'json',
+		'text',
+		'log',
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+		'rust'
+	}
 
 	if is_enabled then
 		is_enabled = false
@@ -41,4 +56,10 @@ require("setup.keymap").nnoremap('<leader>bl', function()
 	end
 
 	blankline.setup(opts)
+end
+
+toggle_blankline()
+
+require("setup.keymap").nnoremap('<leader>bl', function()
+	toggle_blankline()
 end, { silent = true })
