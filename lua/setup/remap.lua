@@ -1,6 +1,10 @@
 local nnoremap = require("setup.keymap").nnoremap
+local vnoremap = require("setup.keymap").vnoremap
 
-require("setup.helpers").set_keymaps(nnoremap,
+local set_keymaps = require("setup.helpers").set_keymaps
+
+-- Normal mode
+set_keymaps(nnoremap,
 	{
 		-- Toggle FileTree
 		{ "<leader>nt", "<cmd>NvimTreeToggle<CR>" },
@@ -42,5 +46,15 @@ require("setup.helpers").set_keymaps(nnoremap,
 		{ "<leader>ut", "<cmd>UndotreeToggle<CR>" },
 		-- Redo
 		{ "U", "<cmd>redo<CR>" },
+	}
+)
+
+-- Visual mode
+set_keymaps(vnoremap,
+	{
+		-- Move line down
+		{ "J", ":m '>+1<CR>gv=gv" },
+		-- Move line up
+		{ "K", ":m '<-2<CR>gv=gv" },
 	}
 )
