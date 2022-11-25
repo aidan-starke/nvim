@@ -15,8 +15,7 @@ local function all(tbl, check)
 end
 
 neoclip.setup({
-	history = 1000,
-	enable_persistent_history = true,
+	history = 10,
 	filter = function(data)
 		return not all(data.event.regcontents, is_whitespace)
 	end, -- Dont save blank lines to register

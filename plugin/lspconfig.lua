@@ -26,15 +26,15 @@ local on_attach = function(client, bufnr)
 
 	require("setup.helpers").set_keymaps(buf_set_keymap,
 		{
-			{ 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
-			{ 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
 			{ 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
-			{ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
 			{ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
-			{ 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
-			{ 'li', '<cmd>LspInfo<CR>' },
-			{ 'la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
-			{ 'lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
+			{ 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
+			{ 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
+			{ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
+			{ 'gtd', '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
+			{ '<leader>li', '<cmd>LspInfo<CR>' },
+			{ '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
+			{ '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
 		}, { noremap = true, silent = true })
 
 	-- Diagnostic hover
@@ -176,7 +176,6 @@ for _, lsp in ipairs(servers) do
 				on_attach(client, bufnr)
 				enable_format_on_save(client, bufnr)
 			end,
-
 		})
 	end
 

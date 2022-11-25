@@ -37,7 +37,7 @@ dap.configurations.typescript = {
 		runtimeArgs = { "-r", "ts-node/register" },
 		runtimeExecutable = "node",
 		args = { "--inspect", "${file}" },
-		sourceMaps = true,
+		-- sourceMaps = true,
 		skipFiles = { "<node_internals>/**", "node_modules/**" },
 	},
 	{
@@ -48,7 +48,7 @@ dap.configurations.typescript = {
 		runtimeArgs = { "--inspect-brk", "${workspaceFolder}/node_modules/.bin/jest" },
 		runtimeExecutable = "node",
 		args = { "${file}", "--runInBand", "--coverage", "false" },
-		sourceMaps = true,
+		-- sourceMaps = true,
 		port = 9229,
 		skipFiles = { "<node_internals>/**", "node_modules/**" },
 	},

@@ -48,6 +48,8 @@ return require('packer').startup(
 
 		use 'mattkubej/jest.nvim' -- Run Jest in nvim
 
+		use 'acksld/nvim-neoclip.lua' -- Clipboard manager
+
 		use {
 			'hrsh7th/nvim-cmp',
 			'L3MON4D3/LuaSnip',
@@ -55,7 +57,6 @@ return require('packer').startup(
 			'folke/neodev.nvim',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-nvim-lsp',
-			'onsails/lspkind-nvim',
 			'neovim/nvim-lspconfig',
 			'williamboman/mason.nvim',
 			'simrat39/rust-tools.nvim',
@@ -82,6 +83,13 @@ return require('packer').startup(
 				require('focus').setup()
 			end
 		} -- Window management
+
+		use {
+			'onsails/lspkind-nvim',
+			config = function()
+				require('lspkind').init()
+			end
+		} -- LSP icons
 
 		use { 'numToStr/Comment.nvim',
 			config = function()
@@ -137,13 +145,6 @@ return require('packer').startup(
 			},
 		}) -- File search
 
-		use {
-			'acksld/nvim-neoclip.lua',
-			requires = {
-				{ 'kkharji/sqlite.lua', module = 'sqlite' },
-			},
-		} -- Clipboard manager
-
 		use({
 			'iamcco/markdown-preview.nvim',
 			run = function()
@@ -154,7 +155,7 @@ return require('packer').startup(
 		use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
-				require('nvim-treesitter.install').update({ with_sync = true })
+				require('nvim-treesitter.install').update({ with_sync = true })()
 			end,
 		} -- Treesitter ( syntax highlighting etc.. )
 	end
