@@ -18,40 +18,18 @@ nightfox.setup({
 		nightfox = {
 			syntax = {
 				preproc = blue, -- import
+				ident = "white", -- params
+				string = "cyan",
 				builtin0 = orange, -- 'function'
 				const = orange.dim,
+				builtin1 = "#bde0fe", -- built in types
+				type = orange.bright,
 				bracket = "orange.dim", -- +punctuation
 				number = orange.bright, -- +boolean
 				conditional = blue.bright, -- +for
-				ident = "white", -- params
-				string = "cyan",
-				type = orange.bright,
 			},
 		},
 	}
 })
 
 vim.cmd [[colorscheme nightfox]]
-
-local isTransparent = true
-
-function Toggle_transparent_background()
-	if isTransparent then
-		nightfox.setup({
-			options = {
-				transparent = false
-			}
-		})
-		isTransparent = false
-	else
-		nightfox.setup({
-			options = {
-				transparent = true
-			}
-		})
-		isTransparent = true
-	end
-	vim.cmd("colorscheme nightfox")
-end
-
-require("setup.keymap").nnoremap('<leader>ct', '<cmd>lua Toggle_transparent_background()<CR>', { silent = true })

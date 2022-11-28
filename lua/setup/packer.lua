@@ -10,8 +10,6 @@ return require('packer').startup(
 
 		use 'kyazdani42/nvim-web-devicons' -- Icons
 
-		use 'windwp/nvim-autopairs' -- Auto brackets
-
 		use 'norcalli/nvim-colorizer.lua' -- Color highlight
 
 		use 'github/copilot.vim' -- Copilot
@@ -23,8 +21,6 @@ return require('packer').startup(
 		use 'phaazon/hop.nvim' -- Hop to a character
 
 		use 'ThePrimeagen/harpoon' -- Create and move between marks
-
-		use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 
 		use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
 
@@ -59,6 +55,12 @@ return require('packer').startup(
 			'ray-x/lsp_signature.nvim',
 			'jose-elias-alvarez/null-ls.nvim',
 			'williamboman/mason-lspconfig.nvim',
+			{
+				'onsails/lspkind-nvim',
+				config = function()
+					require('lspkind').init()
+				end
+			}
 		} -- LSP
 
 		use {
@@ -81,13 +83,10 @@ return require('packer').startup(
 		} -- Window management
 
 		use {
-			'onsails/lspkind-nvim',
-			config = function()
-				require('lspkind').init()
-			end
-		} -- LSP icons
-
-		use { 'numToStr/Comment.nvim',
+			'numToStr/Comment.nvim',
+			requires = {
+				'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
+			},
 			config = function()
 				require('Comment').setup()
 			end
@@ -122,11 +121,14 @@ return require('packer').startup(
 			end
 		} -- Git conflicts
 
-		use { 'windwp/nvim-ts-autotag',
+		use { 'windwp/nvim-autopairs',
+			requires = {
+				'windwp/nvim-ts-autotag' -- Auto html tags
+			},
 			config = function()
 				require('nvim-ts-autotag').setup()
 			end
-		} -- Auto html tags
+		} -- Auto brackets
 
 		use {
 			"lewis6991/gitsigns.nvim",
@@ -159,6 +161,9 @@ return require('packer').startup(
 
 		use {
 			'nvim-treesitter/nvim-treesitter',
+			requires = {
+				'p00f/nvim-ts-rainbow' -- Rainbow brackets
+			},
 			run = function()
 				require('nvim-treesitter.install').update({ with_sync = true })()
 			end,
