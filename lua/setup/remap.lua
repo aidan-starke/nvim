@@ -38,10 +38,6 @@ set_keymaps(nnoremap,
 		-- Markdown
 		{ "<leader>md", "<cmd>MarkdownPreviewToggle<CR>" },
 
-		-- Illuminate
-		{ "<leader>in", "<cmd>lua require('illuminate').next_reference{wrap=true}<CR>" },
-		{ "<leader>ip", "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<CR>" },
-
 		-- Undotree
 		{ "<leader>ut", "<cmd>UndotreeToggle<CR>" },
 		-- Redo

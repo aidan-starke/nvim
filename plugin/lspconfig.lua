@@ -52,9 +52,6 @@ local on_attach = function(client, bufnr)
 		end
 	})
 
-	-- Illuminate
-	require("illuminate").on_attach(client)
-
 	-- Signature
 	require("lsp_signature").on_attach({
 		bind = true,

@@ -18,8 +18,6 @@ return require('packer').startup(
 
 		use 'mvllow/modes.nvim' -- Highlight line based on mode
 
-		use 'sudormrfbin/cheatsheet.nvim' -- Commands cheatsheet
-
 		use 'nat-418/boole.nvim' -- Toggle booleans, dates, etc
 
 		use 'phaazon/hop.nvim' -- Hop to a character
@@ -29,8 +27,6 @@ return require('packer').startup(
 		use 'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 
 		use 'maxmellon/vim-jsx-pretty' -- JSX/TSX syntax highlighting
-
-		use 'RRethy/vim-illuminate' -- Highlight and find other occurences of word under cursor
 
 		use 'lukas-reineke/indent-blankline.nvim' -- Indent guides
 
