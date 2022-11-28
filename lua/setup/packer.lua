@@ -146,6 +146,7 @@ return require('packer').startup(
 			requires = {
 				{ 'nvim-telescope/telescope-dap.nvim' }, -- Debugging integration
 				{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
+				{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Fuzzy finding
 			},
 		}) -- File search
 

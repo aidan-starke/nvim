@@ -1,7 +1,7 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 
-telescope.setup {
+telescope.setup({
 	defaults = {
 		mappings = {
 			n = {
@@ -9,9 +9,18 @@ telescope.setup {
 			},
 		},
 	},
-}
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		}
+	}
+})
 
 telescope.load_extension("dap")
+telescope.load_extension("fzf")
 
 local builtin = require("telescope.builtin")
 local nnoremap = require("setup.keymap").nnoremap
@@ -28,15 +37,18 @@ require("setup.helpers").set_keymaps(nnoremap, {
 		builtin.find_files(merge_tables({
 			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
 		}, ivy_theme))
-	end, },
+	end },
 	{ ';g', function()
 		builtin.live_grep(ivy_theme)
-	end, },
+	end },
+	{ ';z', function()
+		builtin.current_buffer_fuzzy_find(ivy_theme)
+	end },
 	{ '\\\\', function()
 		builtin.buffers(merge_tables({
 			sort_lastused = true,
 		}, normal_mode))
-	end, },
+	end },
 	{ ';t', function()
 		builtin.help_tags(ivy_theme)
 	end },
