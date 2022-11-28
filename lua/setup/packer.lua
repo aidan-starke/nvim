@@ -112,6 +112,14 @@ return require('packer').startup(
 			end
 		} -- Popup windows
 
+		use {
+			'kylechui/nvim-surround',
+			tag = '*',
+			config = function()
+				require('nvim-surround').setup()
+			end
+		} -- Edit surrounding brackets/quotes/tags
+
 		use { 'akinsho/git-conflict.nvim',
 			config = function()
 				require('git-conflict').setup()
