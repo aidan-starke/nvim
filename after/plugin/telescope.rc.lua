@@ -9,14 +9,6 @@ telescope.setup({
 			},
 		},
 	},
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		}
-	}
 })
 
 telescope.load_extension("dap")
@@ -53,7 +45,7 @@ require("setup.helpers").set_keymaps(nnoremap, {
 		builtin.help_tags(ivy_theme)
 	end },
 	{ ';;', function()
-		builtin.resume(ivy_theme)
+		builtin.resume(normal_mode)
 	end },
 	{ ';d', function()
 		builtin.diagnostics(ivy_theme)
@@ -67,7 +59,7 @@ require("setup.helpers").set_keymaps(nnoremap, {
 			grouped = true,
 			previewer = false,
 			layout_config = { height = 40 }
-		}, ivy_theme))
+		}, normal_mode))
 	end },
 	{ ";h", function()
 		telescope.extensions.harpoon.marks(normal_mode)
