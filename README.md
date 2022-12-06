@@ -15,7 +15,7 @@ Plugins are managed with [packer](https://github.com/wbthomason/packer.nvim)
 As [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) depends on `nightly` build of neovim I recommend setting up some aliases like the following
 
 ```
-alias nvconfig="nv ~/.config/nvim"
+alias nvconfig="nv $HOME/.config/nvim"
 alias nv="$HOME/nvim-macos/bin/nvim"
 alias nvupdate="$HOME/.config/nvim/nightly.sh"
 ```
