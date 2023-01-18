@@ -161,9 +161,6 @@ return require('packer').startup(
 
 		use {
 			'nvim-treesitter/nvim-treesitter',
-			requires = {
-				'p00f/nvim-ts-rainbow' -- Rainbow brackets
-			},
 			run = function()
 				require('nvim-treesitter.install').update({ with_sync = true })()
 			end,
