@@ -11,6 +11,9 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 15
 vim.opt.smartindent = true
 
+vim.opt.numberwidth = 3
+vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
+
 vim.opt.wrap = false
 
 vim.g.mapleader = " "
