@@ -81,7 +81,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local servers = {
 	"flow",
 	"tailwindcss",
-	"sumneko_lua",
+	"lua_ls",
 	"tsserver",
 	"solidity",
 	"rust_analyzer",
@@ -102,7 +102,7 @@ for _, lsp in ipairs(servers) do
 		return merge_tables(opts, m_opts)
 	end
 
-	if lsp == "sumneko_lua" then
+	if lsp == "lua_ls" then
 		opts = merge_opts({
 			on_attach = function(client, bufnr)
 				on_attach(client, bufnr)
