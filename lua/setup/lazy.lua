@@ -39,7 +39,7 @@ return require('lazy').setup(
 
 		'gelguy/wilder.nvim', -- Command line hints
 
-		'feline-nvim/feline.nvim', -- Statusline
+		'freddiehaddad/feline.nvim', -- Statusline
 
 		'petertriho/nvim-scrollbar', -- Scrollbar
 
