@@ -13,43 +13,37 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup(
 	{
-		'nvim-lua/plenary.nvim', -- Common utils
+		'nvim-lua/plenary.nvim',                                             -- Common utils
 
-		'EdenEast/nightfox.nvim', -- nightfox colorscheme
+		'EdenEast/nightfox.nvim',                                            -- nightfox colorscheme
 
-		'kyazdani42/nvim-web-devicons', -- Icons
+		'kyazdani42/nvim-web-devicons',                                      -- Icons
 
-		'norcalli/nvim-colorizer.lua', -- Color highlight
+		'norcalli/nvim-colorizer.lua',                                       -- Color highlight
 
-		'github/copilot.vim', -- Copilot
+		'github/copilot.vim',                                                -- Copilot
 
-		'mvllow/modes.nvim', -- Highlight line based on mode
+		'mvllow/modes.nvim',                                                 -- Highlight line based on mode
 
-		'nat-418/boole.nvim', -- Toggle booleans, dates, etc
+		'maxmellon/vim-jsx-pretty',                                          -- JSX/TSX syntax highlighting
 
-		'phaazon/hop.nvim', -- Hop to a character
+		'freddiehaddad/feline.nvim',                                         -- Statusline
 
-		'ThePrimeagen/harpoon', -- Create and move between marks
+		'petertriho/nvim-scrollbar',                                         -- Scrollbar
 
-		'maxmellon/vim-jsx-pretty', -- JSX/TSX syntax highlighting
+		{ 'nat-418/boole.nvim',                  lazy = true },              -- Toggle booleans, dates, etc
 
-		'lukas-reineke/indent-blankline.nvim', -- Indent guides
+		{ 'phaazon/hop.nvim',                    lazy = true },              -- Hop to a character
 
-		'mbbill/undotree', -- Undo history
+		{ 'ThePrimeagen/harpoon',                lazy = true },              -- Create and move between marks
 
-		'gelguy/wilder.nvim', -- Command line hints
+		{ 'lukas-reineke/indent-blankline.nvim', lazy = true },              -- Indent guides
 
-		'freddiehaddad/feline.nvim', -- Statusline
+		{ 'gelguy/wilder.nvim',                  lazy = true },              -- Command line hints
 
-		'petertriho/nvim-scrollbar', -- Scrollbar
+		{ 'kdheepak/lazygit.nvim',               lazy = true },              -- Visual Git
 
-		'kdheepak/lazygit.nvim', -- Visual Git
-
-		'xorid/swap-split.nvim', -- Swap split windows
-
-		'mattkubej/jest.nvim', -- Run Jest in nvim
-
-		'acksld/nvim-neoclip.lua', -- Clipboard manager
+		{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 		{
 			'hrsh7th/nvim-cmp',
@@ -124,13 +118,15 @@ return require('lazy').setup(
 			end
 		}, -- Edit surrounding brackets/quotes/tags
 
-		{ 'akinsho/git-conflict.nvim',
+		{
+			'akinsho/git-conflict.nvim',
 			config = function()
 				require('git-conflict').setup()
 			end
 		}, -- Git conflicts
 
-		{ 'windwp/nvim-autopairs',
+		{
+			'windwp/nvim-autopairs',
 			dependencies = {
 				'windwp/nvim-ts-autotag' -- Auto html tags
 			},
@@ -155,17 +151,17 @@ return require('lazy').setup(
 		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = {
-				{ 'nvim-telescope/telescope-dap.nvim' }, -- Debugging integration
-				{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
-				{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } -- Fuzzy finding
+				{ 'nvim-telescope/telescope-dap.nvim' },                -- Debugging integration
+				{ 'nvim-telescope/telescope-file-browser.nvim' },       -- File browser
+				{ 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' } -- Fuzzy finding
 			},
-		}, -- File search
+		},                                                            -- File search
 
 		{
 			'iamcco/markdown-preview.nvim',
 			build = function()
 				vim.fn['mkdp#util#install']()
-			end,
+			end
 		}, -- Markdown preview
 
 		{
