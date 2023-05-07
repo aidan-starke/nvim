@@ -26,12 +26,12 @@ local on_attach = function(client, bufnr)
 
 	require("setup.helpers").set_keymaps(buf_set_keymap,
 		{
-			{ 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
-			{ 'gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
-			{ 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
-			{ 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
-			{ 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
-			{ 'gtd', '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
+			{ 'K',          '<cmd>lua vim.lsp.buf.hover()<CR>' },
+			{ 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>' },
+			{ 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>' },
+			{ 'gD',         '<cmd>lua vim.lsp.buf.declaration()<CR>' },
+			{ 'gi',         '<cmd>lua vim.lsp.buf.implementation()<CR>' },
+			{ 'gtd',        '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
 			{ '<leader>li', '<cmd>LspInfo<CR>' },
 			{ '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
 			{ '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
@@ -70,11 +70,11 @@ local handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
 	["textDocument/publishDiagnostics"] = vim.lsp.with(
 		vim.lsp.diagnostic.on_publish_diagnostics, {
-		underline = true,
-		update_in_insert = false,
-		virtual_text = { spacing = 4, prefix = "●" },
-		severity_sort = true,
-	})
+			underline = true,
+			update_in_insert = false,
+			virtual_text = { spacing = 4, prefix = "●" },
+			severity_sort = true,
+		})
 }
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -114,7 +114,6 @@ for _, lsp in ipairs(servers) do
 						-- Get the language server to recognize the `vim` global
 						globals = { "vim" },
 					},
-
 					workspace = {
 						-- Make the server aware of Neovim runtime files
 						library = vim.api.nvim_get_runtime_file("", true),
