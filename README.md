@@ -2,15 +2,10 @@
 
 ### Installing plugins
 
-Plugins are managed with [packer](https://github.com/wbthomason/packer.nvim)
+Plugins are managed with [lazy](https://github.com/folke/lazy.nvim)
 
-- Open up `lua/setup/packer.lua` in vim/neovim
-- Enter the following commands
-
-```
-:so
-:PackerSync
-```
+- Plugins are setup in `lua/setup/lazy.lua`
+- Run `:Lazy` to manage / update
 
 As [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) depends on `nightly` build of neovim I recommend setting up some aliases like the following
 
