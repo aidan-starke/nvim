@@ -13,35 +13,35 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup(
 	{
-		'nvim-lua/plenary.nvim',                                             -- Common utils
+		'nvim-lua/plenary.nvim', -- Common utils
 
-		'EdenEast/nightfox.nvim',                                            -- nightfox colorscheme
+		'EdenEast/nightfox.nvim', -- nightfox colorscheme
 
-		'kyazdani42/nvim-web-devicons',                                      -- Icons
+		'kyazdani42/nvim-web-devicons', -- Icons
 
-		'github/copilot.vim',                                                -- Copilot
+		'github/copilot.vim', -- Copilot
 
-		'mvllow/modes.nvim',                                                 -- Highlight line based on mode
+		'mvllow/modes.nvim', -- Highlight line based on mode
 
-		'maxmellon/vim-jsx-pretty',                                          -- JSX/TSX syntax highlighting
+		'maxmellon/vim-jsx-pretty', -- JSX/TSX syntax highlighting
 
-		'freddiehaddad/feline.nvim',                                         -- Statusline
+		'freddiehaddad/feline.nvim', -- Statusline
 
-		'petertriho/nvim-scrollbar',                                         -- Scrollbar
+		'petertriho/nvim-scrollbar', -- Scrollbar
 
-		{ 'phaazon/hop.nvim',                    lazy = true },              -- Hop to a character
+		{ 'phaazon/hop.nvim', lazy = true }, -- Hop to a character
 
-		{ 'ThePrimeagen/harpoon',                lazy = true },              -- Create and move between marks
+		{ 'ThePrimeagen/harpoon', lazy = true }, -- Create and move between marks
 
-		{ 'lukas-reineke/indent-blankline.nvim', lazy = true },              -- Indent guides
+		{ 'lukas-reineke/indent-blankline.nvim', lazy = true }, -- Indent guides
 
-		{ 'gelguy/wilder.nvim',                  lazy = true },              -- Command line hints
+		{ 'gelguy/wilder.nvim', lazy = true }, -- Command line hints
 
-		{ 'kdheepak/lazygit.nvim',               lazy = true },              -- Visual Git
+		{ 'kdheepak/lazygit.nvim', lazy = true }, -- Visual Git
 
-		{ 'chrisgrieser/nvim-spider',            lazy = true },              -- Improved `w` `e` `b` movements
+		{ 'chrisgrieser/nvim-spider', lazy = true }, -- Improved `w` `e` `b` movements
 
-		{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
+		{ 'mattkubej/jest.nvim', cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 		{
 			'hrsh7th/nvim-cmp',
@@ -146,10 +146,11 @@ return require('lazy').setup(
 		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = {
-				{ 'nvim-telescope/telescope-file-browser.nvim' },       -- File browser
-				{ 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' } -- Fuzzy finding
+				{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
+				{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Fuzzy finding
+				{ 'Theo-Steiner/togglescope' }, -- Toggle search modes
 			},
-		},                                                            -- File search
+		}, -- File search
 
 		{
 			'iamcco/markdown-preview.nvim',
