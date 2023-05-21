@@ -19,8 +19,6 @@ return require('lazy').setup(
 
 		'kyazdani42/nvim-web-devicons',                                      -- Icons
 
-		'norcalli/nvim-colorizer.lua',                                       -- Color highlight
-
 		'github/copilot.vim',                                                -- Copilot
 
 		'mvllow/modes.nvim',                                                 -- Highlight line based on mode
@@ -30,8 +28,6 @@ return require('lazy').setup(
 		'freddiehaddad/feline.nvim',                                         -- Statusline
 
 		'petertriho/nvim-scrollbar',                                         -- Scrollbar
-
-		{ 'nat-418/boole.nvim',                  lazy = true },              -- Toggle booleans, dates, etc
 
 		{ 'phaazon/hop.nvim',                    lazy = true },              -- Hop to a character
 
@@ -100,7 +96,9 @@ return require('lazy').setup(
 		{
 			'karb94/neoscroll.nvim',
 			config = function()
-				require('neoscroll').setup()
+				require('neoscroll').setup({
+					performance_mode = true
+				})
 			end
 		}, -- Smooth scrolling
 
@@ -146,14 +144,8 @@ return require('lazy').setup(
 		}, -- Git integration
 
 		{
-			'mfussenegger/nvim-dap',
-			dependencies = 'theHamsta/nvim-dap-virtual-text'
-		}, -- Debugging
-
-		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = {
-				{ 'nvim-telescope/telescope-dap.nvim' },                -- Debugging integration
 				{ 'nvim-telescope/telescope-file-browser.nvim' },       -- File browser
 				{ 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' } -- Fuzzy finding
 			},

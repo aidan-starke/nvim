@@ -9,6 +9,9 @@ set_keymaps(nnoremap,
 		-- Toggle FileTree
 		{ "<leader>nt",       "<cmd>NvimTreeToggle<CR>" },
 
+		-- ToggleTerm
+		{ "<leader>tt",       "<cmd>ToggleTerm direction=float<CR>" },
+
 		-- Select All
 		{ "<leader>sa",       "gg<S-v>G" },
 

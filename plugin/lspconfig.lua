@@ -22,7 +22,7 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 ---@diagnostic disable-next-line: unused-local
-local on_attach = function(client, bufnr)
+local on_attach = function(_client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, 'n', ...) end
 
 	require("setup.helpers").set_keymaps(buf_set_keymap,
