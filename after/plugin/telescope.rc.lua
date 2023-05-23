@@ -30,6 +30,7 @@ telescope.setup({
 	},
 })
 
+telescope.load_extension("dap")
 telescope.load_extension("fzf")
 
 local builtin = require("telescope.builtin")
@@ -79,6 +80,18 @@ require("setup.helpers").set_keymaps(nnoremap, {
 			previewer = false,
 			layout_config = { height = 40 }
 		}, normal_mode))
+	end },
+	{ ';db', function()
+		telescope.extensions.dap.list_breakpoints(normal_mode)
+	end },
+	{ ';dc', function()
+		telescope.extensions.dap.commands(normal_mode)
+	end },
+	{ ';dv', function()
+		telescope.extensions.dap.variables(normal_mode)
+	end },
+	{ ';df', function()
+		telescope.extensions.dap.frames(normal_mode)
 	end },
 	{ ";h", function()
 		telescope.extensions.harpoon.marks(normal_mode)

@@ -44,6 +44,11 @@ return require('lazy').setup(
 		{ 'mattkubej/jest.nvim', cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 		{
+			'mfussenegger/nvim-dap',
+			dependencies = 'theHamsta/nvim-dap-virtual-text'
+		}, -- Debugging
+
+		{
 			'hrsh7th/nvim-cmp',
 			'L3MON4D3/LuaSnip',
 			'j-hui/fidget.nvim',
@@ -146,6 +151,7 @@ return require('lazy').setup(
 		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = {
+				{ 'nvim-telescope/telescope-dap.nvim' }, -- Debugging integration
 				{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
 				{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Fuzzy finding
 				{ 'Theo-Steiner/togglescope' }, -- Toggle search modes
