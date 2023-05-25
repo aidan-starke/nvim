@@ -12,7 +12,7 @@ telescope.setup({
 })
 
 telescope.load_extension("dap")
-telescope.load_extension("fzf")
+-- telescope.load_extension("fzf")
 
 local builtin = require("telescope.builtin")
 local nnoremap = require("setup.keymap").nnoremap
@@ -33,9 +33,9 @@ require("setup.helpers").set_keymaps(nnoremap, {
 	{ ';g', function()
 		builtin.live_grep(ivy_theme)
 	end },
-	{ ';z', function()
-		builtin.current_buffer_fuzzy_find(ivy_theme)
-	end },
+	-- { ';z', function()
+	-- 	builtin.current_buffer_fuzzy_find(ivy_theme)
+	-- end },
 	{ '\\\\', function()
 		builtin.buffers(merge_tables({
 			sort_lastused = true,

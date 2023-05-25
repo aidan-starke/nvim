@@ -3,12 +3,12 @@
 cd ~ 
 
 curl -s https://api.github.com/repos/neovim/neovim/releases/tags/nightly \
-| grep "browser_download_url.*macos" \
+| grep "browser_download_url.*linux64" \
 | cut -d : -f 2,3 \
 | tr -d \" \
 | wget -qi -
 
-xattr -c ./nvim-macos.tar.gz
-tar xzvf nvim-macos.tar.gz
+xattr -c ./nvim-linux64.tar.gz
+tar xzvf nvim-linux64.tar.gz
 
-rm nvim-macos.tar.gz nvim-macos.tar.gz.sha256sum
+rm nvim-linux64.tar.gz nvim-linux64.tar.gz.sha256sum

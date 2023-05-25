@@ -10,6 +10,8 @@ local function disable_large_files(_lang, buf)
 	end
 end
 
+require 'nvim-treesitter.install'.prefer_git = false
+
 ts.setup {
 	ensure_installed = {
 		"lua",

@@ -13,43 +13,43 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup(
 	{
-		'nvim-lua/plenary.nvim', -- Common utils
+		'nvim-lua/plenary.nvim',           -- Common utils
 
-		'EdenEast/nightfox.nvim', -- nightfox colorscheme
+		'EdenEast/nightfox.nvim',          -- nightfox colorscheme
 
-		'kyazdani42/nvim-web-devicons', -- Icons
+		'kyazdani42/nvim-web-devicons',    -- Icons
 
-		'norcalli/nvim-colorizer.lua', -- Color highlight
+		'norcalli/nvim-colorizer.lua',     -- Color highlight
 
-		'github/copilot.vim', -- Copilot
+		'github/copilot.vim',              -- Copilot
 
-		'mvllow/modes.nvim', -- Highlight line based on mode
+		'mvllow/modes.nvim',               -- Highlight line based on mode
 
-		'nat-418/boole.nvim', -- Toggle booleans, dates, etc
+		'nat-418/boole.nvim',              -- Toggle booleans, dates, etc
 
-		'phaazon/hop.nvim', -- Hop to a character
+		'phaazon/hop.nvim',                -- Hop to a character
 
-		'ThePrimeagen/harpoon', -- Create and move between marks
+		'ThePrimeagen/harpoon',            -- Create and move between marks
 
-		'maxmellon/vim-jsx-pretty', -- JSX/TSX syntax highlighting
+		'maxmellon/vim-jsx-pretty',        -- JSX/TSX syntax highlighting
 
 		'lukas-reineke/indent-blankline.nvim', -- Indent guides
 
-		'mbbill/undotree', -- Undo history
+		'mbbill/undotree',                 -- Undo history
 
-		'gelguy/wilder.nvim', -- Command line hints
+		'gelguy/wilder.nvim',              -- Command line hints
 
-		'freddiehaddad/feline.nvim', -- Statusline
+		'freddiehaddad/feline.nvim',       -- Statusline
 
-		'petertriho/nvim-scrollbar', -- Scrollbar
+		'petertriho/nvim-scrollbar',       -- Scrollbar
 
-		'kdheepak/lazygit.nvim', -- Visual Git
+		'kdheepak/lazygit.nvim',           -- Visual Git
 
-		'xorid/swap-split.nvim', -- Swap split windows
+		'xorid/swap-split.nvim',           -- Swap split windows
 
-		'mattkubej/jest.nvim', -- Run Jest in nvim
+		'mattkubej/jest.nvim',             -- Run Jest in nvim
 
-		'acksld/nvim-neoclip.lua', -- Clipboard manager
+		'acksld/nvim-neoclip.lua',         -- Clipboard manager
 
 		{
 			'hrsh7th/nvim-cmp',
@@ -124,13 +124,15 @@ return require('lazy').setup(
 			end
 		}, -- Edit surrounding brackets/quotes/tags
 
-		{ 'akinsho/git-conflict.nvim',
+		{
+			'akinsho/git-conflict.nvim',
 			config = function()
-				require('git-conflict').setup()
+				require('git-conflict').setup({})
 			end
 		}, -- Git conflicts
 
-		{ 'windwp/nvim-autopairs',
+		{
+			'windwp/nvim-autopairs',
 			dependencies = {
 				'windwp/nvim-ts-autotag' -- Auto html tags
 			},
@@ -155,9 +157,9 @@ return require('lazy').setup(
 		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = {
-				{ 'nvim-telescope/telescope-dap.nvim' }, -- Debugging integration
+				{ 'nvim-telescope/telescope-dap.nvim' },  -- Debugging integration
 				{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
-				{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } -- Fuzzy finding
+				-- { 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' } -- Fuzzy finding
 			},
 		}, -- File search
 
