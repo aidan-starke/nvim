@@ -1,21 +1,41 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 
+local togglescope_keybinding = '<C-^>'
+
 telescope.setup({
 	defaults = {
+		file_ignore_patterns = { "^.git/", "node_modules", "^.yarn/", "^.next/" },
 		mappings = {
 			n = {
 				["q"] = require('telescope.actions').close
 			},
 		},
 	},
+	extensions = {
+		togglescope = {
+			find_files = {
+				[togglescope_keybinding] = {
+					no_ignore = true,
+					togglescope_title = "Find Files (hidden)"
+				}
+			},
+			live_grep = {
+				[togglescope_keybinding] = {
+					additional_args = { '--hidden', '--no-ignore' },
+					togglescope_title = "Live Grep (hidden)"
+				}
+			}
+		},
+	},
 })
 
 telescope.load_extension("dap")
--- telescope.load_extension("fzf")
+telescope.load_extension("fzf")
 
 local builtin = require("telescope.builtin")
 local nnoremap = require("setup.keymap").nnoremap
+local togglescope = telescope.extensions.togglescope
 local ivy_theme = require("telescope.themes").get_ivy()
 local merge_tables = require("setup.helpers").merge_tables
 
@@ -26,16 +46,16 @@ local normal_mode = merge_tables({
 
 require("setup.helpers").set_keymaps(nnoremap, {
 	{ ';f', function()
-		builtin.find_files(merge_tables({
-			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+		togglescope.find_files(merge_tables({
+			find_command = { "rg", "--files", "--hidden" },
 		}, ivy_theme))
 	end },
 	{ ';g', function()
-		builtin.live_grep(ivy_theme)
+		togglescope.live_grep(ivy_theme)
 	end },
-	-- { ';z', function()
-	-- 	builtin.current_buffer_fuzzy_find(ivy_theme)
-	-- end },
+	{ ';z', function()
+		builtin.current_buffer_fuzzy_find(ivy_theme)
+	end },
 	{ '\\\\', function()
 		builtin.buffers(merge_tables({
 			sort_lastused = true,
@@ -61,9 +81,6 @@ require("setup.helpers").set_keymaps(nnoremap, {
 			layout_config = { height = 40 }
 		}, normal_mode))
 	end },
-	{ ";h", function()
-		telescope.extensions.harpoon.marks(normal_mode)
-	end },
 	{ ';db', function()
 		telescope.extensions.dap.list_breakpoints(normal_mode)
 	end },
@@ -76,7 +93,7 @@ require("setup.helpers").set_keymaps(nnoremap, {
 	{ ';df', function()
 		telescope.extensions.dap.frames(normal_mode)
 	end },
-	{ ';c', function()
-		telescope.load_extension('neoclip').default(normal_mode)
-	end }
+	{ ";h", function()
+		telescope.extensions.harpoon.marks(normal_mode)
+	end },
 })

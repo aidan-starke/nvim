@@ -14,8 +14,6 @@ local opts = {
 	show_current_context = true,
 }
 
-blankline.setup(opts)
-
 local is_enabled = true
 local merge_tables = require("setup.helpers").merge_tables
 

@@ -13,43 +13,40 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup(
 	{
-		'nvim-lua/plenary.nvim',           -- Common utils
+		'nvim-lua/plenary.nvim',                                             -- Common utils
 
-		'EdenEast/nightfox.nvim',          -- nightfox colorscheme
+		'EdenEast/nightfox.nvim',                                            -- nightfox colorscheme
 
-		'kyazdani42/nvim-web-devicons',    -- Icons
+		'kyazdani42/nvim-web-devicons',                                      -- Icons
 
-		'norcalli/nvim-colorizer.lua',     -- Color highlight
+		'github/copilot.vim',                                                -- Copilot
 
-		'github/copilot.vim',              -- Copilot
+		'mvllow/modes.nvim',                                                 -- Highlight line based on mode
 
-		'mvllow/modes.nvim',               -- Highlight line based on mode
+		'maxmellon/vim-jsx-pretty',                                          -- JSX/TSX syntax highlighting
 
-		'nat-418/boole.nvim',              -- Toggle booleans, dates, etc
+		'freddiehaddad/feline.nvim',                                         -- Statusline
 
-		'phaazon/hop.nvim',                -- Hop to a character
+		'petertriho/nvim-scrollbar',                                         -- Scrollbar
 
-		'ThePrimeagen/harpoon',            -- Create and move between marks
+		{ 'phaazon/hop.nvim',                    lazy = true },              -- Hop to a character
 
-		'maxmellon/vim-jsx-pretty',        -- JSX/TSX syntax highlighting
+		{ 'ThePrimeagen/harpoon',                lazy = true },              -- Create and move between marks
 
-		'lukas-reineke/indent-blankline.nvim', -- Indent guides
+		{ 'lukas-reineke/indent-blankline.nvim', lazy = true },              -- Indent guides
 
-		'mbbill/undotree',                 -- Undo history
+		{ 'gelguy/wilder.nvim',                  lazy = true },              -- Command line hints
 
-		'gelguy/wilder.nvim',              -- Command line hints
+		{ 'kdheepak/lazygit.nvim',               lazy = true },              -- Visual Git
 
-		'freddiehaddad/feline.nvim',       -- Statusline
+		{ 'chrisgrieser/nvim-spider',            lazy = true },              -- Improved `w` `e` `b` movements
 
-		'petertriho/nvim-scrollbar',       -- Scrollbar
+		{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
-		'kdheepak/lazygit.nvim',           -- Visual Git
-
-		'xorid/swap-split.nvim',           -- Swap split windows
-
-		'mattkubej/jest.nvim',             -- Run Jest in nvim
-
-		'acksld/nvim-neoclip.lua',         -- Clipboard manager
+		{
+			'mfussenegger/nvim-dap',
+			dependencies = 'theHamsta/nvim-dap-virtual-text'
+		}, -- Debugging
 
 		{
 			'hrsh7th/nvim-cmp',
@@ -104,7 +101,9 @@ return require('lazy').setup(
 		{
 			'karb94/neoscroll.nvim',
 			config = function()
-				require('neoscroll').setup()
+				require('neoscroll').setup({
+					performance_mode = true
+				})
 			end
 		}, -- Smooth scrolling
 
@@ -150,24 +149,20 @@ return require('lazy').setup(
 		}, -- Git integration
 
 		{
-			'mfussenegger/nvim-dap',
-			dependencies = 'theHamsta/nvim-dap-virtual-text'
-		}, -- Debugging
-
-		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = {
-				{ 'nvim-telescope/telescope-dap.nvim' },  -- Debugging integration
-				{ 'nvim-telescope/telescope-file-browser.nvim' }, -- File browser
-				-- { 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' } -- Fuzzy finding
+				{ 'nvim-telescope/telescope-dap.nvim' },                 -- Debugging integration
+				{ 'nvim-telescope/telescope-file-browser.nvim' },        -- File browser
+				{ 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make' }, -- Fuzzy finding
+				{ 'Theo-Steiner/togglescope' },                          -- Toggle search modes
 			},
-		}, -- File search
+		},                                                             -- File search
 
 		{
 			'iamcco/markdown-preview.nvim',
 			build = function()
 				vim.fn['mkdp#util#install']()
-			end,
+			end
 		}, -- Markdown preview
 
 		{
