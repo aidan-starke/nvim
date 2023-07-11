@@ -51,7 +51,6 @@ return require('lazy').setup(
 		{
 			'hrsh7th/nvim-cmp',
 			'L3MON4D3/LuaSnip',
-			'j-hui/fidget.nvim',
 			'folke/neodev.nvim',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-nvim-lsp',
@@ -61,6 +60,7 @@ return require('lazy').setup(
 			'ray-x/lsp_signature.nvim',
 			'jose-elias-alvarez/null-ls.nvim',
 			'williamboman/mason-lspconfig.nvim',
+			{ 'j-hui/fidget.nvim', tag = 'legacy' },
 			{
 				'onsails/lspkind-nvim',
 				config = function()
