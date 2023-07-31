@@ -39,8 +39,6 @@ return require('lazy').setup(
 
 		{ 'kdheepak/lazygit.nvim',               lazy = true },              -- Visual Git
 
-		{ 'chrisgrieser/nvim-spider',            lazy = true },              -- Improved `w` `e` `b` movements
-
 		{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 		{
