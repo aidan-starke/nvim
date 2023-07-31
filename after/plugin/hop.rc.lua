@@ -1,7 +1,7 @@
 local status, hop = pcall(require, 'hop')
 if (not status) then return end
 
-hop.setup { keys = 'abcdefghijklmnopqrstuvwxyz' }
+hop.setup()
 
 local directions = require('hop.hint').HintDirection
 local set_keymaps = require("setup.helpers").set_keymaps
