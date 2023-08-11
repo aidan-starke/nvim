@@ -43,7 +43,7 @@ local on_attach = function(_client, bufnr)
 		buffer = bufnr,
 		callback = function()
 			vim.diagnostic.open_float(nil, {
-				focusable = false,
+				focusable = true,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
 				border = "rounded",
 				source = "always",
