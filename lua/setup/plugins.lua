@@ -159,4 +159,12 @@ return {
 			require('nvim-treesitter.install').update({ with_sync = true })()
 		end,
 	}, -- Treesitter ( syntax highlighting etc.. )
+
+	{
+		"sustech-data/wildfire.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("wildfire").setup()
+		end,
+	} -- Smart selection
 }
