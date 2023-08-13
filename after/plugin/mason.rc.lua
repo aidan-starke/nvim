@@ -5,6 +5,7 @@ if (not status2) then return end
 
 mason.setup({
 	ui = {
+		border = "rounded",
 		icons = {
 			package_installed = "✓",
 			package_pending = "➜",

@@ -1,8 +1,6 @@
 return {
 	'nvim-lua/plenary.nvim',                               -- Common utils
 
-	'EdenEast/nightfox.nvim',                              -- nightfox colorscheme
-
 	'kyazdani42/nvim-web-devicons',                        -- Icons
 
 	'github/copilot.vim',                                  -- Copilot
@@ -25,7 +23,9 @@ return {
 
 	'ThePrimeagen/harpoon',                                -- Create and move between file marks
 
-	{ 'mattkubej/jest.nvim', cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
+	{ 'EdenEast/nightfox.nvim', priority = 1000 },         -- nightfox colorscheme
+
+	{ 'mattkubej/jest.nvim',    cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 	{
 		'mfussenegger/nvim-dap',

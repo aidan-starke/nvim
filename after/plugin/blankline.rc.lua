@@ -32,7 +32,9 @@ local function toggle_blankline()
 		'javascriptreact',
 		'typescript',
 		'typescriptreact',
-		'rust'
+		'rust',
+		'mason',
+		'lazy'
 	}
 
 	if is_enabled then
