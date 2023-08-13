@@ -113,9 +113,8 @@ return {
 
 	{
 		'akinsho/git-conflict.nvim',
-		config = function()
-			require('git-conflict').setup({})
-		end
+		version = "*",
+		config = true
 	}, -- Git conflicts
 
 	{
