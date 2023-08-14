@@ -129,9 +129,18 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		config = function()
 			require('gitsigns').setup()
 			require("scrollbar.handlers.gitsigns").setup()
+
+			set_keymaps(nnoremap, {
+				{ "<leader>grh", "<cmd>Gitsigns reset_hunk<CR>" },
+				{ "<leader>gsh", "<cmd>Gitsigns stage_hunk<CR>" },
+				{ "<leader>gb",  "<cmd>Gitsigns blame_line<CR>" },
+				{ "<leader>grb", "<cmd>Gitsigns reset_buffer<CR>" },
+				{ "<leader>gsb", "<cmd>Gitsigns stage_buffer<CR>" },
+			})
 		end
 	}, -- Git integration
 
