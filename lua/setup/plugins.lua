@@ -1,34 +1,38 @@
+local nnoremap = require("setup.keymap").nnoremap
+local set_keymaps = require("setup.helpers").set_keymaps
+
 return {
-	'nvim-lua/plenary.nvim',                               -- Common utils
+	'nvim-lua/plenary.nvim',                                               -- Common utils
 
-	'kyazdani42/nvim-web-devicons',                        -- Icons
+	'kyazdani42/nvim-web-devicons',                                        -- Icons
 
-	'github/copilot.vim',                                  -- Copilot
+	{ 'github/copilot.vim',       event = "VeryLazy", },                   -- Copilot
 
-	'mvllow/modes.nvim',                                   -- Highlight line based on mode
+	'mvllow/modes.nvim',                                                   -- Highlight line based on mode
 
-	'maxmellon/vim-jsx-pretty',                            -- JSX/TSX syntax highlighting
+	{ 'maxmellon/vim-jsx-pretty', event = "VeryLazy", },                   -- JSX/TSX syntax highlighting
 
-	'freddiehaddad/feline.nvim',                           -- Statusline
+	'freddiehaddad/feline.nvim',                                           -- Statusline
 
-	'petertriho/nvim-scrollbar',                           -- Scrollbar
+	'petertriho/nvim-scrollbar',                                           -- Scrollbar
 
-	'phaazon/hop.nvim',                                    -- Hop to a character
+	{ 'phaazon/hop.nvim',                    event = "VeryLazy", },        -- Hop to a character
 
-	'lukas-reineke/indent-blankline.nvim',                 -- Indent guides
+	{ 'lukas-reineke/indent-blankline.nvim', event = "VeryLazy", },        -- Indent guides
 
-	'kdheepak/lazygit.nvim',                               -- Visual Git
+	{ 'kdheepak/lazygit.nvim',               event = "VeryLazy", },        -- Visual Git
 
-	'gelguy/wilder.nvim',                                  -- Command line hints
+	{ 'gelguy/wilder.nvim',                  event = "VeryLazy", },        -- Command line hints
 
-	'ThePrimeagen/harpoon',                                -- Create and move between file marks
+	{ 'ThePrimeagen/harpoon',                event = "VeryLazy", },        -- Create and move between file marks
 
-	{ 'EdenEast/nightfox.nvim', priority = 1000 },         -- nightfox colorscheme
+	{ 'EdenEast/nightfox.nvim',              priority = 1000 },            -- nightfox colorscheme
 
-	{ 'mattkubej/jest.nvim',    cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
+	{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 	{
 		'mfussenegger/nvim-dap',
+		event = "VeryLazy",
 		dependencies = 'theHamsta/nvim-dap-virtual-text'
 	}, -- Debugging
 
@@ -67,6 +71,7 @@ return {
 
 	{
 		'beauwilliams/focus.nvim',
+		event = "VeryLazy",
 		config = function()
 			require('focus').setup()
 		end,
@@ -74,6 +79,7 @@ return {
 
 	{
 		'numToStr/Comment.nvim',
+		event = "VeryLazy",
 		dependencies = {
 			'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
 		},
@@ -94,6 +100,7 @@ return {
 	{
 		'akinsho/toggleterm.nvim',
 		version = '*',
+		event = "VeryLazy",
 		config = function()
 			require('toggleterm').setup({
 				float_opts = {
@@ -106,6 +113,7 @@ return {
 	{
 		'kylechui/nvim-surround',
 		version = '*',
+		event = "VeryLazy",
 		config = function()
 			require('nvim-surround').setup()
 		end
@@ -113,12 +121,14 @@ return {
 
 	{
 		'akinsho/git-conflict.nvim',
+		event = "VeryLazy",
 		version = "*",
 		config = true
 	}, -- Git conflicts
 
 	{
 		'windwp/nvim-autopairs',
+		event = "VeryLazy",
 		dependencies = {
 			'windwp/nvim-ts-autotag' -- Auto html tags
 		},
@@ -136,10 +146,10 @@ return {
 
 			set_keymaps(nnoremap, {
 				{ "<leader>grh", "<cmd>Gitsigns reset_hunk<CR>" },
-				{ "<leader>gsh", "<cmd>Gitsigns stage_hunk<CR>" },
-				{ "<leader>gb",  "<cmd>Gitsigns blame_line<CR>" },
 				{ "<leader>grb", "<cmd>Gitsigns reset_buffer<CR>" },
+				{ "<leader>gb",  "<cmd>Gitsigns blame_line<CR>" },
 				{ "<leader>gsb", "<cmd>Gitsigns stage_buffer<CR>" },
+				{ "<leader>gsh", "<cmd>Gitsigns stage_hunk<CR>" },
 			})
 		end
 	}, -- Git integration
@@ -156,6 +166,7 @@ return {
 
 	{
 		'iamcco/markdown-preview.nvim',
+		event = "VeryLazy",
 		build = function()
 			vim.fn['mkdp#util#install']()
 		end
