@@ -6,15 +6,17 @@ return {
 
 	'kyazdani42/nvim-web-devicons',                                        -- Icons
 
-	{ 'github/copilot.vim',       event = "VeryLazy", },                   -- Copilot
-
 	'mvllow/modes.nvim',                                                   -- Highlight line based on mode
-
-	{ 'maxmellon/vim-jsx-pretty', event = "VeryLazy", },                   -- JSX/TSX syntax highlighting
 
 	'freddiehaddad/feline.nvim',                                           -- Statusline
 
 	'petertriho/nvim-scrollbar',                                           -- Scrollbar
+
+	{ 'EdenEast/nightfox.nvim',              priority = 1000 },            -- nightfox colorscheme
+
+	{ 'github/copilot.vim',                  event = "VeryLazy", },        -- Copilot
+
+	{ 'maxmellon/vim-jsx-pretty',            event = "VeryLazy", },        -- JSX/TSX syntax highlighting
 
 	{ 'phaazon/hop.nvim',                    event = "VeryLazy", },        -- Hop to a character
 
@@ -26,8 +28,6 @@ return {
 
 	{ 'ThePrimeagen/harpoon',                event = "VeryLazy", },        -- Create and move between file marks
 
-	{ 'EdenEast/nightfox.nvim',              priority = 1000 },            -- nightfox colorscheme
-
 	{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
 
 	{
@@ -35,6 +35,12 @@ return {
 		event = "VeryLazy",
 		dependencies = 'theHamsta/nvim-dap-virtual-text'
 	}, -- Debugging
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = "MunifTanjim/nui.nvim"
+	}, -- UI
 
 	{
 		'hrsh7th/nvim-cmp',
@@ -185,5 +191,5 @@ return {
 		config = function()
 			require("wildfire").setup()
 		end,
-	} -- Smart selection
+	}, -- Smart selection
 }
