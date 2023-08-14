@@ -17,8 +17,8 @@ nightfox.setup({
 	specs = {
 		nightfox = {
 			syntax = {
-				preproc = blue, -- import
-				ident = "white", -- params
+				preproc = blue,    -- import
+				ident = "white",   -- params
 				string = "cyan",
 				builtin0 = orange, -- 'function'
 				const = orange.dim,
@@ -33,3 +33,4 @@ nightfox.setup({
 })
 
 vim.cmd [[colorscheme nightfox]]
+vim.cmd [[highlight! link NormalFloat Normal]]
