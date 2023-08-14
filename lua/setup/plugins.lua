@@ -37,12 +37,6 @@ return {
 	}, -- Debugging
 
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = "MunifTanjim/nui.nvim"
-	}, -- UI
-
-	{
 		'hrsh7th/nvim-cmp',
 		'L3MON4D3/LuaSnip',
 		'folke/neodev.nvim',
@@ -192,4 +186,23 @@ return {
 			require("wildfire").setup()
 		end,
 	}, -- Smart selection
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			{
+				"rcarriga/nvim-notify",
+				config = function()
+					---@diagnostic disable-next-line: missing-fields
+					require("notify").setup({
+						fps = 120,
+						render = "compact",
+						background_colour = "#000000",
+					})
+				end
+			},
+		}
+	}, -- UI
 }
