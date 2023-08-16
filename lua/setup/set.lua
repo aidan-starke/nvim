@@ -26,4 +26,4 @@ vim.opt.updatetime = 50
 vim.opt.wildmenu = true
 vim.opt.wildmode = { 'longest', 'full', 'full' }
 
-vim.g.copilot_node_command = '/opt/homebrew/Cellar/node@16/16.20.1_1/bin/node'
+vim.g.copilot_node_command = '/opt/homebrew/Cellar/node@16/16.20.2/bin/node'
