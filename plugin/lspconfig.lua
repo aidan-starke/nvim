@@ -87,7 +87,8 @@ local servers = {
 	"solidity",
 	"rust_analyzer",
 	"prismals",
-	"yamlls"
+	"yamlls",
+	"pyright"
 }
 
 local opts = {}
