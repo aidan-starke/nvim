@@ -80,7 +80,6 @@ local handlers = {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local servers = {
-	"flow",
 	"tailwindcss",
 	"lua_ls",
 	"tsserver",
