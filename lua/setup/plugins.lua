@@ -72,13 +72,6 @@ return {
 	}, -- File tree
 
 	{
-		'lewis6991/impatient.nvim',
-		config = function()
-			require('impatient')
-		end
-	}, -- Speed up startup
-
-	{
 		'beauwilliams/focus.nvim',
 		event = "VeryLazy",
 		config = function()
