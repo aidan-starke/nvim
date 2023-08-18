@@ -41,8 +41,6 @@ set_keymaps(nnoremap,
 		-- Markdown
 		{ "<leader>md",       "<cmd>MarkdownPreviewToggle<CR>" },
 
-		-- Undotree
-		{ "<leader>ut",       "<cmd>UndotreeToggle<CR>" },
 		-- Redo
 		{ "U",                "<cmd>redo<CR>" },
 	}

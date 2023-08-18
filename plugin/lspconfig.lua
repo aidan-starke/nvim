@@ -105,6 +105,7 @@ for _, lsp in ipairs(servers) do
 
 	if lsp == "lua_ls" then
 		opts = merge_opts({
+			before_init = require("neodev.lsp").before_init,
 			on_attach = function(client, bufnr)
 				on_attach(client, bufnr)
 				enable_format_on_save(client, bufnr)
@@ -175,6 +176,17 @@ for _, lsp in ipairs(servers) do
 				enable_format_on_save(client, bufnr)
 			end,
 		})
+	end
+
+	if lsp == "tsserver" then
+		require("typescript-tools").setup(merge_opts({
+			settings = {
+				complete_function_calls = true,
+				separate_diagnostic_server = true,
+			}
+		}))
+
+		goto continue
 	end
 
 	nvim_lsp[lsp].setup(opts)
