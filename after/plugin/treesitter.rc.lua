@@ -1,4 +1,4 @@
-local status, ts = pcall(require, "nvim-treesitter.configs")
+local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
 ---@diagnostic disable-next-line: unused-local
@@ -10,7 +10,8 @@ local function disable_large_files(_lang, buf)
 	end
 end
 
-ts.setup {
+---@diagnostic disable-next-line: missing-fields
+treesitter.setup({
 	ensure_installed = {
 		"lua",
 		"tsx",
@@ -19,7 +20,8 @@ ts.setup {
 		"solidity",
 		"svelte",
 		"rust",
-		"graphql"
+		"graphql",
+		"python"
 	},
 	highlight = {
 		enable = true,
@@ -32,7 +34,7 @@ ts.setup {
 	autotag = {
 		enable = true,
 	},
-}
+})
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "typescript.tsx" }
