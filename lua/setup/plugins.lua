@@ -40,6 +40,12 @@ return {
 	}, -- Debugging
 
 	{
+		'numToStr/Comment.nvim',
+		event = "VeryLazy",
+		dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
+	}, -- Commenting shortcuts
+
+	{
 		'hrsh7th/nvim-cmp',
 		'L3MON4D3/LuaSnip',
 		'folke/neodev.nvim',
@@ -79,17 +85,6 @@ return {
 			require('focus').setup()
 		end,
 	}, -- Window management
-
-	{
-		'numToStr/Comment.nvim',
-		event = "VeryLazy",
-		dependencies = {
-			'JoosepAlviste/nvim-ts-context-commentstring' -- JSX/TSX commenting
-		},
-		config = function()
-			require('Comment').setup()
-		end
-	}, -- Commenting shortcuts
 
 	{
 		'karb94/neoscroll.nvim',
@@ -144,7 +139,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
 		config = function()
-			require('gitsigns').setup()
+			require('gitsigns').setup({})
 			require("scrollbar.handlers.gitsigns").setup()
 
 			set_keymaps(nnoremap, {
