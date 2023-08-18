@@ -2,33 +2,36 @@ local nnoremap = require("setup.keymap").nnoremap
 local set_keymaps = require("setup.helpers").set_keymaps
 
 return {
-	'nvim-lua/plenary.nvim',                                               -- Common utils
+	'nvim-lua/plenary.nvim',                                      -- Common utils
 
-	'kyazdani42/nvim-web-devicons',                                        -- Icons
+	'kyazdani42/nvim-web-devicons',                               -- Icons
 
-	'mvllow/modes.nvim',                                                   -- Highlight line based on mode
+	'mvllow/modes.nvim',                                          -- Highlight line based on mode
 
-	'freddiehaddad/feline.nvim',                                           -- Statusline
+	'freddiehaddad/feline.nvim',                                  -- Statusline
 
-	'petertriho/nvim-scrollbar',                                           -- Scrollbar
+	'petertriho/nvim-scrollbar',                                  -- Scrollbar
 
-	{ 'EdenEast/nightfox.nvim',              priority = 1000 },            -- nightfox colorscheme
+	{ 'EdenEast/nightfox.nvim',              priority = 1000 },   -- nightfox colorscheme
 
-	{ 'github/copilot.vim',                  event = "VeryLazy", },        -- Copilot
+	{ 'github/copilot.vim',                  event = "VeryLazy", }, -- Copilot
 
-	{ 'maxmellon/vim-jsx-pretty',            event = "VeryLazy", },        -- JSX/TSX syntax highlighting
+	{ 'maxmellon/vim-jsx-pretty',            event = "VeryLazy", }, -- JSX/TSX syntax highlighting
 
-	{ 'phaazon/hop.nvim',                    event = "VeryLazy", },        -- Hop to a character
+	{ 'phaazon/hop.nvim',                    event = "VeryLazy", }, -- Hop to a character
 
-	{ 'lukas-reineke/indent-blankline.nvim', event = "VeryLazy", },        -- Indent guides
+	{ 'lukas-reineke/indent-blankline.nvim', event = "VeryLazy", }, -- Indent guides
 
-	{ 'kdheepak/lazygit.nvim',               event = "VeryLazy", },        -- Visual Git
+	{ 'kdheepak/lazygit.nvim',               event = "VeryLazy", }, -- Visual Git
 
-	{ 'gelguy/wilder.nvim',                  event = "VeryLazy", },        -- Command line hints
+	{ 'gelguy/wilder.nvim',                  event = "VeryLazy", }, -- Command line hints
 
-	{ 'ThePrimeagen/harpoon',                event = "VeryLazy", },        -- Create and move between file marks
+	{ 'ThePrimeagen/harpoon',                event = "VeryLazy", }, -- Create and move between file marks
 
-	{ 'mattkubej/jest.nvim',                 cmd = { 'Jest', 'JestFile' } }, -- Run Jest in nvim
+	{
+		'mattkubej/jest.nvim',
+		cmd = { 'Jest', 'JestFile', 'JestSingle' }
+	}, -- Run Jest in nvim
 
 	{
 		'mfussenegger/nvim-dap',
