@@ -4,7 +4,7 @@ local home = os.getenv("HOME")
 dap.adapters.node2 = {
 	type = "executable",
 	command = "node",
-	args = { home .. "/microsoft-sucks/vscode-node-debug2/out/src/nodeDebug.js" },
+	args = { home .. "/microsoft-sucks/out/src/nodeDebug.js" },
 }
 
 dap.configurations.javascript = {
