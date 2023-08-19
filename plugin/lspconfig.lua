@@ -145,7 +145,9 @@ for _, lsp in ipairs(servers) do
 		require("rust-tools").setup({
 			tools = {
 				on_initialized = function()
-					vim.cmd([[autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()]])
+					vim.cmd(
+						[[autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()]]
+					)
 				end,
 			},
 			server = merge_opts({

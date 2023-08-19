@@ -1,5 +1,4 @@
-local nnoremap = require("setup.keymap").nnoremap
-local set_keymaps = require("setup.helpers").set_keymaps
+local set_keymaps, nnoremap = require("setup.helpers").set_keymaps, require("setup.keymap").nnoremap
 
 return {
 	"nvim-lua/plenary.nvim", -- Common utils
