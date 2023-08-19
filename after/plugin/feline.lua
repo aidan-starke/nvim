@@ -1,5 +1,7 @@
 local ok, feline = pcall(require, "feline")
-if (not ok) then return end
+if not ok then
+	return
+end
 
 local fmt = string.format
 
@@ -119,7 +121,8 @@ _G._generate_user_statusline_highlights = function()
 		colors["UserRv" .. name] = { fg = value.bg, bg = value.fg, bold = true }
 	end
 
-	local status = vim.o.background == "dark" and { fg = pal.black, bg = pal.white } or { fg = pal.white, bg = pal.black }
+	local status = vim.o.background == "dark" and { fg = pal.black, bg = pal.white }
+		or { fg = pal.white, bg = pal.black }
 
 	local groups = {
 		-- statusline
@@ -401,7 +404,7 @@ local active = {
 		c.fileinfo,
 		c.default, -- must be last
 	},
-	{         -- right
+	{ -- right
 		c.lsp_status,
 		c.lsp_error,
 		c.lsp_warn,

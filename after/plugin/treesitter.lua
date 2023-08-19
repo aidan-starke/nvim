@@ -1,5 +1,7 @@
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if (not status) then return end
+if not status then
+	return
+end
 
 ---@diagnostic disable-next-line: unused-local
 local function disable_large_files(_lang, buf)
@@ -21,7 +23,7 @@ treesitter.setup({
 		"svelte",
 		"rust",
 		"graphql",
-		"python"
+		"python",
 	},
 	highlight = {
 		enable = true,
@@ -40,5 +42,5 @@ treesitter.setup({
 	},
 })
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "typescript.tsx" }

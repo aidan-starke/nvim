@@ -1,8 +1,10 @@
 local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
+if not status then
+	return
+end
 
 local ok, neodev = pcall(require, "neodev")
-if (ok) then
+if ok then
 	neodev.setup()
 end
 
@@ -18,25 +20,25 @@ local enable_format_on_save = function(_, bufnr)
 	})
 end
 
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 ---@diagnostic disable-next-line: unused-local
 local on_attach = function(_client, bufnr)
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, 'n', ...) end
+	local function buf_set_keymap(...)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", ...)
+	end
 
-	require("setup.helpers").set_keymaps(buf_set_keymap,
-		{
-			{ 'K',          '<cmd>lua vim.lsp.buf.hover()<CR>' },
-			{ 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>' },
-			{ 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>' },
-			{ 'gD',         '<cmd>lua vim.lsp.buf.declaration()<CR>' },
-			{ 'gi',         '<cmd>lua vim.lsp.buf.implementation()<CR>' },
-			{ 'gtd',        '<cmd>lua vim.lsp.buf.type_definition()<CR>' },
-			{ '<leader>li', '<cmd>LspInfo<CR>' },
-			{ '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-			{ '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
-		}, { noremap = true, silent = true })
+	require("setup.helpers").set_keymaps(buf_set_keymap, {
+		{ "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
+		{ "gr", "<cmd>lua vim.lsp.buf.references()<CR>" },
+		{ "gd", "<cmd>lua vim.lsp.buf.definition()<CR>" },
+		{ "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>" },
+		{ "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>" },
+		{ "gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>" },
+		{ "<leader>li", "<cmd>LspInfo<CR>" },
+		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>" },
+		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+	}, { noremap = true, silent = true })
 
 	-- Diagnostic hover
 	vim.api.nvim_create_autocmd("CursorHold", {
@@ -50,7 +52,7 @@ local on_attach = function(_client, bufnr)
 				prefix = " ",
 				scope = "cursor",
 			})
-		end
+		end,
 	})
 
 	-- Signature
@@ -63,19 +65,18 @@ local on_attach = function(_client, bufnr)
 		floating_window = false,
 		handler_opts = {
 			border = "rounded",
-		}
+		},
 	}, bufnr)
 end
 
 local handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-	["textDocument/publishDiagnostics"] = vim.lsp.with(
-		vim.lsp.diagnostic.on_publish_diagnostics, {
-			underline = true,
-			update_in_insert = false,
-			virtual_text = { spacing = 4, prefix = "●" },
-			severity_sort = true,
-		})
+	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		underline = true,
+		update_in_insert = false,
+		virtual_text = { spacing = 4, prefix = "●" },
+		severity_sort = true,
+	}),
 }
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -87,7 +88,7 @@ local servers = {
 	"rust_analyzer",
 	"prismals",
 	"yamlls",
-	"pyright"
+	"pyright",
 }
 
 local opts = {}
@@ -119,7 +120,7 @@ for _, lsp in ipairs(servers) do
 					workspace = {
 						-- Make the server aware of Neovim runtime files
 						library = vim.api.nvim_get_runtime_file("", true),
-						checkThirdParty = false
+						checkThirdParty = false,
 					},
 				},
 			},
@@ -128,7 +129,7 @@ for _, lsp in ipairs(servers) do
 
 	if lsp == "tailwindcss" then
 		opts = merge_opts({
-			filetypes = { "javascriptreact", "typescriptreact", "svelte" }
+			filetypes = { "javascriptreact", "typescriptreact", "svelte" },
 		})
 	end
 
@@ -141,10 +142,10 @@ for _, lsp in ipairs(servers) do
 	if lsp == "rust_analyzer" then
 		require("setup.rust").set_rust_keymaps()
 
-		require("rust-tools").setup {
+		require("rust-tools").setup({
 			tools = {
 				on_initialized = function()
-					vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()]]
+					vim.cmd([[autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()]])
 				end,
 			},
 			server = merge_opts({
@@ -164,7 +165,7 @@ for _, lsp in ipairs(servers) do
 					},
 				},
 			}),
-		}
+		})
 
 		goto continue
 	end
@@ -183,7 +184,7 @@ for _, lsp in ipairs(servers) do
 			settings = {
 				complete_function_calls = true,
 				separate_diagnostic_server = true,
-			}
+			},
 		}))
 
 		goto continue
@@ -194,7 +195,6 @@ for _, lsp in ipairs(servers) do
 	::continue::
 end
 
-
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -204,7 +204,7 @@ end
 
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = "●"
+		prefix = "●",
 	},
 	update_in_insert = true,
 	float = {

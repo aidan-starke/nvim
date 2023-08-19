@@ -1,5 +1,7 @@
 local status, tree = pcall(require, "nvim-tree")
-if (not status) then return end
+if not status then
+	return
+end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -13,8 +15,8 @@ tree.setup({
 			show = {
 				folder = false,
 				file = false,
-			}
-		}
+			},
+		},
 	},
 	actions = {
 		open_file = {
@@ -28,8 +30,8 @@ tree.setup({
 		ignore = false,
 	},
 	view = {
-		relativenumber = true
-	}
+		relativenumber = true,
+	},
 })
 
 -- open on startup
@@ -47,5 +49,5 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
 		-- open the tree
 		require("nvim-tree.api").tree.open()
-	end
+	end,
 })

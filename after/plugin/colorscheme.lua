@@ -1,9 +1,10 @@
 local status, nightfox = pcall(require, "nightfox")
-if (not status) then return end
+if not status then
+	return
+end
 
-local Shade = require("nightfox.lib.shade")
-local blue = Shade.new("#00a6fb", 0.15, -0.15) -- base, bright, dim
-local orange = Shade.new("#ee5622", "#f6aa1c", -0.15)
+local shade = require("nightfox.lib.shade")
+local blue, orange = shade.new("#00a6fb", 0.15, -0.15), shade.new("#ee5622", "#f6aa1c", -0.15)
 
 nightfox.setup({
 	options = {
@@ -17,8 +18,8 @@ nightfox.setup({
 	specs = {
 		nightfox = {
 			syntax = {
-				preproc = blue,    -- import
-				ident = "white",   -- params
+				preproc = blue, -- import
+				ident = "white", -- params
 				string = "cyan",
 				builtin0 = orange, -- 'function'
 				const = orange.dim,
@@ -29,8 +30,8 @@ nightfox.setup({
 				conditional = blue.bright, -- +for
 			},
 		},
-	}
+	},
 })
 
-vim.cmd [[colorscheme nightfox]]
-vim.cmd [[highlight! link NormalFloat Normal]]
+vim.cmd([[colorscheme nightfox]])
+vim.cmd([[highlight! link NormalFloat Normal]])

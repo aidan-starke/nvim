@@ -1,12 +1,14 @@
-local status, blankline = pcall(require, 'indent_blankline')
-if (not status) then return end
+local status, blankline = pcall(require, "indent_blankline")
+if not status then
+	return
+end
 
-vim.cmd [[highlight IndentBlanklineIndent guifg=#3b4252 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineContextChar guifg=#f6aa1c gui=nocombine]]
+vim.cmd([[highlight IndentBlanklineIndent guifg=#3b4252 gui=nocombine]])
+vim.cmd([[highlight IndentBlanklineContextChar guifg=#f6aa1c gui=nocombine]])
 
 local opts = {
-	char = '│',
-	buftype_exclude = { 'terminal' },
+	char = "│",
+	buftype_exclude = { "terminal" },
 	show_first_blankline_level = false,
 	char_highlight_list = {
 		"IndentBlanklineIndent",
@@ -19,22 +21,22 @@ local merge_tables = require("setup.helpers").merge_tables
 
 local function toggle_blankline()
 	local filetype_exclude = {
-		'lua',
-		'packer',
-		'help',
-		'NvimTree',
-		'gitcommit',
-		'markdown',
-		'json',
-		'text',
-		'log',
-		'javascript',
-		'javascriptreact',
-		'typescript',
-		'typescriptreact',
-		'rust',
-		'mason',
-		'lazy'
+		"lua",
+		"packer",
+		"help",
+		"NvimTree",
+		"gitcommit",
+		"markdown",
+		"json",
+		"text",
+		"log",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"rust",
+		"mason",
+		"lazy",
 	}
 
 	if is_enabled then
@@ -60,6 +62,6 @@ end
 
 toggle_blankline()
 
-require("setup.keymap").nnoremap('<leader>bl', function()
+require("setup.keymap").nnoremap("<leader>bl", function()
 	toggle_blankline()
 end, { silent = true })

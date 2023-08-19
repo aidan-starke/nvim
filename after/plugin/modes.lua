@@ -1,5 +1,7 @@
-local status, modes = pcall(require, 'modes')
-if (not status) then return end
+local status, modes = pcall(require, "modes")
+if not status then
+	return
+end
 
 modes.setup({
 	colors = {
@@ -24,5 +26,5 @@ modes.setup({
 
 	-- Disable modes highlights in specified filetypes
 	-- Please PR commonly ignored filetypes
-	ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
+	ignore_filetypes = { "NvimTree", "TelescopePrompt" },
 })
