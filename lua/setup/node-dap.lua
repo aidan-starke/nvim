@@ -34,7 +34,10 @@ dap.configurations.typescript = {
 		type = "node2",
 		request = "launch",
 		cwd = vim.loop.cwd(),
-		runtimeArgs = { "-r", "ts-node/register", "-r", "dotenv/config" },
+		runtimeArgs = {
+			"-r",
+			"ts-node/register", --[[ "-r", "dotenv/config" ]]
+		},
 		runtimeExecutable = "node",
 		args = { "--inspect", "${file}" },
 		-- sourceMaps = true,
