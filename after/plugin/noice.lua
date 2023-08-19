@@ -1,5 +1,5 @@
-local status, noice = pcall(require, "noice")
-if not status then
+local ok, noice = pcall(require, "noice")
+if not ok then
 	return
 end
 

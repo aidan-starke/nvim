@@ -1,5 +1,5 @@
-local status, scrollbar = pcall(require, "scrollbar")
-if not status then
+local ok, scrollbar = pcall(require, "scrollbar")
+if not ok then
 	return
 end
 

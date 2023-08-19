@@ -1,5 +1,5 @@
-local status, wilder = pcall(require, "wilder")
-if not status then
+local ok, wilder = pcall(require, "wilder")
+if not ok then
 	return
 end
 

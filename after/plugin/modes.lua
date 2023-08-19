@@ -1,5 +1,5 @@
-local status, modes = pcall(require, "modes")
-if not status then
+local ok, modes = pcall(require, "modes")
+if not ok then
 	return
 end
 

@@ -1,10 +1,10 @@
-local status, nvim_lsp = pcall(require, "lspconfig")
-if not status then
+local ok, nvim_lsp = pcall(require, "lspconfig")
+if not ok then
 	return
 end
 
-local ok, neodev = pcall(require, "neodev")
-if ok then
+local okay, neodev = pcall(require, "neodev")
+if okay then
 	neodev.setup()
 end
 

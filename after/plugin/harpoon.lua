@@ -1,5 +1,5 @@
-local status, harpoon = pcall(require, "harpoon")
-if not status then
+local ok, harpoon = pcall(require, "harpoon")
+if not ok then
 	return
 end
 

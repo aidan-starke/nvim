@@ -1,10 +1,10 @@
-local status_one, dap = pcall(require, "dap")
-if not status_one then
+local ok, dap = pcall(require, "dap")
+if not ok then
 	return
 end
 
-local status_two, daptext = pcall(require, "nvim-dap-virtual-text")
-if not status_two then
+local okay, daptext = pcall(require, "nvim-dap-virtual-text")
+if not okay then
 	return
 end
 

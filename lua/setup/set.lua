@@ -1,4 +1,3 @@
--- Speed up startup
 vim.loader.enable()
 
 vim.opt.guicursor = ""
