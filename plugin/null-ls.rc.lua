@@ -17,12 +17,14 @@ local has_dprint_config = function()
 	return ok
 end
 
+local formatting = null_ls.builtins.formatting
+
 null_ls.setup({
 	sources = {
 		null_ls.builtins.diagnostics.eslint_d.with({
 			diagnostics_format = '[eslint] #{m}\n(#{c})'
 		}),
-		has_dprint_config() and null_ls.builtins.formatting.dprint or null_ls.builtins.formatting.prettierd,
+		has_dprint_config() and formatting.dprint or formatting.prettierd,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

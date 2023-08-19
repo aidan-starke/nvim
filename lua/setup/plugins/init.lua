@@ -46,29 +46,6 @@ return {
 	}, -- Commenting shortcuts
 
 	{
-		'hrsh7th/nvim-cmp',
-		'folke/neodev.nvim',
-		'hrsh7th/cmp-buffer',
-		'onsails/lspkind-nvim',
-		'hrsh7th/cmp-nvim-lsp',
-		'neovim/nvim-lspconfig',
-		'williamboman/mason.nvim',
-		'simrat39/rust-tools.nvim',
-		'ray-x/lsp_signature.nvim',
-		'pmizio/typescript-tools.nvim',
-		'jose-elias-alvarez/null-ls.nvim',
-		'williamboman/mason-lspconfig.nvim',
-		{ 'j-hui/fidget.nvim', tag = 'legacy' },
-	}, -- LSP
-
-	{
-		'L3MON4D3/LuaSnip',
-		version = "v2.*",
-		build = "make install_jsregexp",
-		dependencies = { "rafamadriz/friendly-snippets", 'saadparwaiz1/cmp_luasnip', },
-	}, -- Snippets
-
-	{
 		'nvim-tree/nvim-tree.lua',
 		tag = 'nightly'
 	}, -- File tree

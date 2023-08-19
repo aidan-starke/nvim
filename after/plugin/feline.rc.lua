@@ -401,7 +401,7 @@ local active = {
 		c.fileinfo,
 		c.default, -- must be last
 	},
-	{ -- right
+	{         -- right
 		c.lsp_status,
 		c.lsp_error,
 		c.lsp_warn,
