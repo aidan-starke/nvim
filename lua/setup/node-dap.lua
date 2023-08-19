@@ -1,4 +1,5 @@
-local dap = require("dap")
+local status, dap = pcall(require, "dap")
+if (not status) then return end
 
 local home = os.getenv('HOME')
 dap.adapters.node2 = {
