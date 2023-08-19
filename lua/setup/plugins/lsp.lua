@@ -102,8 +102,8 @@ return {
 		version = "v2.*",
 		build = "make install_jsregexp",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
 			'saadparwaiz1/cmp_luasnip',
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			local luasnip = require("luasnip")
@@ -118,7 +118,7 @@ return {
 				ext_opts = {
 					[types.choiceNode] = {
 						active = {
-							virt_text = { { "choiceNode", "Comment" } },
+							virt_text = { { "<-- choose wisely", "Comment" } },
 						},
 					},
 				}
