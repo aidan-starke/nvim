@@ -32,6 +32,8 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
+			require("lspconfig.ui.windows").default_options.border = "rounded"
+
 			require("mason").setup({
 				ui = {
 					border = "rounded",
