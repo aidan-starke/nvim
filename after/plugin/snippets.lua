@@ -22,7 +22,18 @@ ls.add_snippets("lua", {
 })
 
 ls.add_snippets("rust", {
-	s("yeet", fmt([[println!("yeet {{}}", {});]], { i(1, "yeet") })),
+	s(
+		"yeet",
+		fmt([[println!("{} {{{}}}", {});]], {
+			i(1, "yeet"),
+			c(2, {
+				t(""),
+				t(":?"),
+				t(":#?"),
+			}),
+			i(0, "yeet"),
+		})
+	),
 	s(
 		"modtest",
 		fmt(
