@@ -144,7 +144,7 @@ return {
 					end,
 				},
 				{
-					"<C-l>",
+					"<C-c>",
 					function()
 						if luasnip.choice_active() then
 							luasnip.change_choice(1)
