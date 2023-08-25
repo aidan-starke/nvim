@@ -1,10 +1,8 @@
 local ok, dap = pcall(require, "dap")
-if not ok then
-	return
-end
-
 local okay, daptext = pcall(require, "nvim-dap-virtual-text")
-if not okay then
+local rokay, mason_registry = pcall(require, "mason-registry")
+
+if not ok or not okay or not rokay then
 	return
 end
 
@@ -18,61 +16,35 @@ dap.listeners.before.event_exited["yeet"] = function()
 end
 
 dap.adapters.node2 = {
-	type = "executable",
 	command = "node",
-	args = { os.getenv("HOME") .. "/microsoft-sucks/out/src/nodeDebug.js" },
+	type = "executable",
+	args = {
+		mason_registry.get_package("node-debug2-adapter"):get_install_path() .. "/out/src/nodeDebug.js",
+	},
+}
+
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#installation-with-homebrew
+dap.adapters.lldb = {
+	name = "lldb",
+	type = "executable",
+	command = "/opt/homebrew/opt/llvm/bin/lldb-vscode", -- $(brew --prefix llvm)/bin
+}
+
+local javascript = require("setup.dap.javascript")
+local typescript = require("setup.dap.typescript")
+
+dap.configurations.typescript = {
+	typescript.node,
+	typescript.jest,
 }
 
 dap.configurations.javascript = {
-	{
-		name = "Launch",
-		type = "node2",
-		request = "launch",
-		program = "${file}",
-		cwd = vim.loop.cwd(),
-		sourceMaps = true,
-		protocol = "inspector",
-		console = "integratedTerminal",
-	},
-	{
-		-- For this to work you need to make sure the node process
-		-- is started with the `--inspect` flag.
-		name = "Attach to process",
-		type = "node2",
-		request = "attach",
-		processId = require("dap.utils").pick_process,
-	},
+	javascript.launch,
+	javascript.attach,
 }
 
-dap.configurations.typescript = {
-	{
-		name = "ts-node (Node2 with ts-node)",
-		type = "node2",
-		request = "launch",
-		cwd = vim.loop.cwd(),
-		runtimeArgs = {
-			"-r",
-			"ts-node/register",
-			"-r",
-			"tsconfig-paths/register", --[[ "-r", "dotenv/config" ]]
-		},
-		runtimeExecutable = "node",
-		args = { "--inspect", "${file}" },
-		-- sourceMaps = true,
-		skipFiles = { "<node_internals>/**", "node_modules/**" },
-	},
-	{
-		name = "Jest (Node2 with ts-node)",
-		type = "node2",
-		request = "launch",
-		cwd = vim.loop.cwd(),
-		runtimeArgs = { "--inspect-brk", "${workspaceFolder}/node_modules/.bin/jest" },
-		runtimeExecutable = "node",
-		args = { "${file}", "--runInBand", "--coverage", "false" },
-		-- sourceMaps = true,
-		port = 9229,
-		skipFiles = { "<node_internals>/**", "node_modules/**" },
-	},
+dap.configurations.rust = {
+	require("setup.rust").dap_configuration,
 }
 
 local nnoremap = require("setup.keymap").nnoremap
