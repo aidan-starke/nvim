@@ -89,6 +89,7 @@ local servers = {
 	"prismals",
 	"yamlls",
 	"pyright",
+	"taplo", -- toml files
 }
 
 local opts = {}
