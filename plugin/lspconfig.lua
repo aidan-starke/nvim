@@ -165,8 +165,8 @@ for _, lsp in ipairs(servers) do
 						checkOnSave = {
 							command = "clippy",
 						},
-						diagnostics = {
-							disabled = { "unresolved-proc-macro" },
+						procMacro = {
+							enable = false,
 						},
 					},
 				},
