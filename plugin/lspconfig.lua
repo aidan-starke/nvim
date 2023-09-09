@@ -90,6 +90,7 @@ local servers = {
 	"yamlls",
 	"pyright",
 	"taplo", -- toml files
+	"gopls",
 }
 
 local opts = {}
