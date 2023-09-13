@@ -19,7 +19,7 @@ return {
 
 	{ "phaazon/hop.nvim", event = "VeryLazy" }, -- Hop to a character
 
-	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" }, -- Indent guides
+	{ "lukas-reineke/indent-blankline.nvim" }, -- Indent guides
 
 	{ "kdheepak/lazygit.nvim", event = "VeryLazy" }, -- Visual Git
 
