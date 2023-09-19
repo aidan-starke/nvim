@@ -167,6 +167,7 @@ return {
 					---@diagnostic disable-next-line: missing-fields
 					require("notify").setup({
 						fps = 120,
+						top_down = false,
 						render = "compact",
 						background_colour = "#000000",
 					})
