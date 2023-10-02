@@ -42,6 +42,9 @@ set_keymaps(nnoremap, {
 
 	-- Redo
 	{ "U", "<cmd>redo<CR>" },
+
+	-- Blankline
+	{ "<leader>bl", "<cmd>IBLToggle<CR>" },
 })
 
 -- Visual mode
