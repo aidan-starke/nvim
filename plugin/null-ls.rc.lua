@@ -15,6 +15,7 @@ local lsp_formatting = function(bufnr)
 end
 
 local has_dprint_config = function()
+	---@diagnostic disable-next-line: redefined-local
 	local ok, _ = pcall(vim.fn.readfile, vim.fn.getcwd() .. "/dprint.json")
 	return ok
 end
