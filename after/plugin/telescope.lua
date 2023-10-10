@@ -34,6 +34,7 @@ telescope.setup({
 
 telescope.load_extension("dap")
 telescope.load_extension("fzf")
+telescope.load_extension("zk")
 
 local togglescope = telescope.extensions.togglescope
 local builtin, ivy_theme = require("telescope.builtin"), require("telescope.themes").get_ivy()
@@ -59,12 +60,6 @@ set_keymaps(nnoremap, {
 		";g",
 		function()
 			togglescope.live_grep(ivy_theme)
-		end,
-	},
-	{
-		";z",
-		function()
-			builtin.current_buffer_fuzzy_find(ivy_theme)
 		end,
 	},
 	{
@@ -135,6 +130,12 @@ set_keymaps(nnoremap, {
 		";h",
 		function()
 			telescope.extensions.harpoon.marks(normal_mode)
+		end,
+	},
+	{
+		";z",
+		function()
+			telescope.extensions.zk.notes(normal_mode)
 		end,
 	},
 })

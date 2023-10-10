@@ -175,4 +175,17 @@ return {
 			},
 		},
 	}, -- UI
+
+	{
+		"mickael-menu/zk-nvim",
+		config = function()
+			require("zk").setup({
+				picker = "telescope",
+			})
+
+			set_keymaps(nnoremap, {
+				{ "<leader>zn", "<cmd>ZkNew<CR>" },
+			}, { silent = true })
+		end,
+	}, -- Note taking
 }
