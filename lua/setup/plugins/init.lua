@@ -157,6 +157,13 @@ return {
 	}, -- Smart selection
 
 	{
+		"folke/todo-comments.nvim",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	}, -- Todo comments
+
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
