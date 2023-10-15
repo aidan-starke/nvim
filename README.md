@@ -4,7 +4,7 @@
 
 Plugins are managed with [lazy](https://github.com/folke/lazy.nvim)
 
-- Plugins are setup in `lua/setup/lazy.lua`
+- Plugins are setup in `lua/setup/plugins`
 - Run `:Lazy` to manage / update
 
 As [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) depends on `nightly` build of neovim I recommend setting up some aliases like the following
