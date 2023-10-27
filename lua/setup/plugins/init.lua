@@ -101,9 +101,6 @@ return {
 		dependencies = {
 			"windwp/nvim-ts-autotag", -- Auto html tags
 		},
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
 	}, -- Auto brackets
 
 	{
