@@ -5,7 +5,19 @@ local set_keymaps = require("setup.helpers").set_keymaps
 
 return {
 	"ray-x/lsp_signature.nvim",
-	"nvimtools/none-ls.nvim",
+
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				javascript = { { "prettierd", "prettier" } },
+			},
+			format_on_save = { timeout_ms = 500, lsp_fallback = true },
+		},
+	}, -- Formatting
 
 	{
 		"folke/neodev.nvim",
