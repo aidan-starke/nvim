@@ -8,7 +8,7 @@ curl -s https://api.github.com/repos/neovim/neovim/releases/tags/nightly \
 | tr -d \" \
 | wget -qi -
 
-xattr -c ./nvim-macos.tar.gz
-tar xzvf nvim-macos.tar.gz
+xattr -c ./nvim-macos-arm64.tar.gz
+tar xzvf nvim-macos-arm64.tar.gz
 
-rm nvim-macos.tar.gz nvim-macos.tar.gz.sha256sum
+rm nvim-macos-arm64.tar.gz nvim-macos-arm64.tar.gz.sha256sum
