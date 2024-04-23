@@ -34,7 +34,6 @@ telescope.setup({
 
 telescope.load_extension("dap")
 telescope.load_extension("fzf")
-telescope.load_extension("zk")
 telescope.load_extension("todo-comments")
 
 local togglescope = telescope.extensions.togglescope
@@ -125,12 +124,6 @@ set_keymaps(nnoremap, {
 		";h",
 		function()
 			telescope.extensions.harpoon.marks(normal_mode)
-		end,
-	},
-	{
-		";z",
-		function()
-			telescope.extensions.zk.notes(normal_mode)
 		end,
 	},
 	{
