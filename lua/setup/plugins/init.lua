@@ -190,26 +190,27 @@ return {
 	}, -- Scrolloff
 
 	{
-		"mg979/vim-visual-multi",
-		branch = "master",
+		"zk-org/zk-nvim",
 		config = function()
-			vim.g.VM_leader = "="
-			-- vim.g.VM_maps = {
-			-- 	["Find Under"] = "<C-n>",
-			-- 	["Find Subword Under"] = "<C-n>",
-			-- 	["Find Next"] = "<C-n>",
-			-- 	["Find Prev"] = "<C-p>",
-			-- 	["Find Skip"] = "<C-x>",
-			-- 	["Find Prev Skip"] = "<C-X>",
-			-- 	["Find All"] = "<A-n>",
-			-- 	["Find Prev All"] = "<A-p>",
-			-- 	["Find Next End"] = "<C-N>",
-			-- 	["Find Prev End"] = "<C-P>",
-			-- 	["Find Skip End"] = "<C-X>",
-			-- 	["Find Prev Skip End"] = "<C-X>",
-			-- 	["Find All End"] = "<A-N>",
-			-- 	["Find Prev All End"] = "<A-P",
-			-- }
+			require("zk").setup({
+				picker = "telescope",
+
+				lsp = {
+					config = {
+						cmd = { "zk", "lsp" },
+						name = "zk",
+					},
+				},
+
+				auto_attach = {
+					enabled = true,
+					filetypes = { "markdown" },
+				},
+			})
+
+			set_keymaps(nnoremap, {
+				{ "<leader>zn", "<Cmd>ZkNew<CR>" },
+			})
 		end,
-	}, -- Multicursor
+	}, -- notes
 }
