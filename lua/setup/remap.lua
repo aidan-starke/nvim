@@ -45,6 +45,9 @@ set_keymaps(nnoremap,
 		{ "<leader>ut",       "<cmd>UndotreeToggle<CR>" },
 		-- Redo
 		{ "U",                "<cmd>redo<CR>" },
+
+		-- Blankline
+		{ "<leader>bl",		 "<cmd>IBLToggle<CR>" },
 	}
 )
 
