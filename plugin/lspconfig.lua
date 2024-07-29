@@ -151,6 +151,7 @@ for _, lsp in ipairs(servers) do
 					on_attach(client, bufnr)
 					enable_format_on_save(client, bufnr)
 				end,
+				cmd = { vim.fn.expand("$HOME/ra-multiplex/client.sh") },
 				settings = {
 					["rust-analyzer"] = {
 						lens = {
