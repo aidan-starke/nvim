@@ -19,7 +19,8 @@ ts.setup {
 		"solidity",
 		"svelte",
 		"rust",
-		"graphql"
+		"graphql",
+		"c_sharp"
 	},
 	highlight = {
 		enable = true,
