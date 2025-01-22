@@ -9,7 +9,6 @@ local mapOpts = { noremap = true, silent = true }
 
 local lazygit = Terminal:new({
 	cmd = "lazygit",
-	dir = "git_dir",
 	direction = "float",
 	float_opts = {
 		border = "rounded",
