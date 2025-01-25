@@ -13,7 +13,7 @@ return {
 
 	{ "EdenEast/nightfox.nvim", priority = 1000 }, -- nightfox colorscheme
 
-	{ "github/copilot.vim", event = "VeryLazy" }, -- Copilot
+	{ "Exafunction/codeium.nvim" }, -- Codeium (AI completion)
 
 	{ "maxmellon/vim-jsx-pretty", event = "VeryLazy" }, -- JSX/TSX syntax highlighting
 
