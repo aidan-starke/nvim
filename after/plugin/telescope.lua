@@ -35,7 +35,6 @@ telescope.setup({
 telescope.load_extension("dap")
 telescope.load_extension("fzf")
 telescope.load_extension("todo-comments")
-telescope.load_extension("zk")
 
 local togglescope = telescope.extensions.togglescope
 local builtin, ivy_theme = require("telescope.builtin"), require("telescope.themes").get_ivy()
@@ -131,12 +130,6 @@ set_keymaps(nnoremap, {
 		";t",
 		function()
 			telescope.extensions["todo-comments"].todo(normal_mode)
-		end,
-	},
-	{
-		";z",
-		function()
-			telescope.extensions.zk.notes(normal_mode)
 		end,
 	},
 })

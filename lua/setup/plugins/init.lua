@@ -188,29 +188,4 @@ return {
 			require("scrollEOF").setup()
 		end,
 	}, -- Scrolloff
-
-	{
-		"zk-org/zk-nvim",
-		config = function()
-			require("zk").setup({
-				picker = "telescope",
-
-				lsp = {
-					config = {
-						cmd = { "zk", "lsp" },
-						name = "zk",
-					},
-				},
-
-				auto_attach = {
-					enabled = true,
-					filetypes = { "markdown" },
-				},
-			})
-
-			set_keymaps(nnoremap, {
-				{ "<leader>zn", "<Cmd>ZkNew<CR>" },
-			})
-		end,
-	}, -- notes
 }
