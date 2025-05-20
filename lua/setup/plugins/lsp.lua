@@ -1,15 +1,10 @@
----@diagnostic disable: missing-fields
-
 local bind = require("setup.keymap").bind
 local set_keymaps = require("setup.helpers").set_keymaps
 
 return {
 	"ray-x/lsp_signature.nvim",
-	"mfussenegger/nvim-lint",
-	{
-  'stevearc/conform.nvim',
-  opts = {},
-},
+	"mfussenegger/nvim-lint", -- Linting
+	"stevearc/conform.nvim", -- Formatting
 
 	{
 		"folke/neodev.nvim",
@@ -49,6 +44,7 @@ return {
 				},
 			})
 
+			---@diagnostic disable-next-line: missing-fields
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
 			})
