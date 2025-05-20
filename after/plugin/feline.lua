@@ -122,7 +122,7 @@ _G._generate_user_statusline_highlights = function()
 	end
 
 	local status = vim.o.background == "dark" and { fg = pal.black, bg = pal.white }
-		or { fg = pal.white, bg = pal.black }
+		 or { fg = pal.white, bg = pal.black }
 
 	local groups = {
 		-- statusline
@@ -404,7 +404,7 @@ local active = {
 		c.fileinfo,
 		c.default, -- must be last
 	},
-	{ -- right
+	{         -- right
 		c.lsp_status,
 		c.lsp_error,
 		c.lsp_warn,

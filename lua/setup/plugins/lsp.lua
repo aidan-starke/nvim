@@ -5,7 +5,11 @@ local set_keymaps = require("setup.helpers").set_keymaps
 
 return {
 	"ray-x/lsp_signature.nvim",
-	"nvimtools/none-ls.nvim",
+	"mfussenegger/nvim-lint",
+	{
+  'stevearc/conform.nvim',
+  opts = {},
+},
 
 	{
 		"folke/neodev.nvim",
