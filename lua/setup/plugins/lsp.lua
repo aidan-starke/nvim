@@ -7,10 +7,14 @@ return {
 	"stevearc/conform.nvim", -- Formatting
 
 	{
-		"folke/neodev.nvim",
 		"simrat39/rust-tools.nvim",
 		"pmizio/typescript-tools.nvim",
 	}, -- Language specific tools
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua"
+	}, -- Lua specific
 
 	{
 		"j-hui/fidget.nvim",

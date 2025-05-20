@@ -3,11 +3,6 @@ if not ok then
 	return
 end
 
-local okay, neodev = pcall(require, "neodev")
-if okay then
-	neodev.setup()
-end
-
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
 	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
@@ -29,12 +24,12 @@ local on_attach = function(_client, bufnr)
 	end
 
 	require("setup.helpers").set_keymaps(buf_set_keymap, {
-		{ "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
-		{ "gr", "<cmd>lua vim.lsp.buf.references()<CR>" },
-		{ "gd", "<cmd>lua vim.lsp.buf.definition()<CR>" },
-		{ "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>" },
-		{ "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>" },
-		{ "gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>" },
+		{ "K",          "<cmd>lua vim.lsp.buf.hover()<CR>" },
+		{ "gr",         "<cmd>lua vim.lsp.buf.references()<CR>" },
+		{ "gd",         "<cmd>lua vim.lsp.buf.definition()<CR>" },
+		{ "gD",         "<cmd>lua vim.lsp.buf.declaration()<CR>" },
+		{ "gi",         "<cmd>lua vim.lsp.buf.implementation()<CR>" },
+		{ "gtd",        "<cmd>lua vim.lsp.buf.type_definition()<CR>" },
 		{ "<leader>li", "<cmd>LspInfo<CR>" },
 		{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>" },
 		{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
@@ -108,7 +103,6 @@ for _, lsp in ipairs(servers) do
 
 	if lsp == "lua_ls" then
 		opts = merge_opts({
-			before_init = require("neodev.lsp").before_init,
 			on_attach = function(client, bufnr)
 				on_attach(client, bufnr)
 				enable_format_on_save(client, bufnr)
