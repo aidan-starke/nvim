@@ -10,6 +10,7 @@ conform.setup({
 		prisma = { "prismals" },
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
+		json = { "prettierd" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
