@@ -5,6 +5,10 @@ end
 
 harpoon.setup({
 	excluded_filetypes = { "harpoon", "NvimTree", "TelescopePrompt" },
+	settings = {
+		save_on_toggle = true,
+		sync_on_ui_close = true
+	}
 })
 
 local harpoon_extensions = require("harpoon.extensions")
