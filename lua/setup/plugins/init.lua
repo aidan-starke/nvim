@@ -169,7 +169,7 @@ return {
 			{
 				"rcarriga/nvim-notify",
 				config = function()
-					---@diagnostic disable-next-line: missing-fields
+					---@diagnostic disable-next-line: missing-fields, undefined-field
 					require("notify").setup({
 						fps = 120,
 						top_down = false,
