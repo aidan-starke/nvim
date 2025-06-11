@@ -38,7 +38,7 @@ copilot.setup({
 		},
 		{
 			"<leader>ccf",
-			"<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
+			"<cmd>CopilotChatFix<cr>", -- Get a fix for the diagnostic message under the cursor.
 			desc = "CopilotChat - Fix Diagnostic",
 		},
 	}
