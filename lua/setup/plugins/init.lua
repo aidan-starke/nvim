@@ -1,29 +1,29 @@
 local set_keymaps, nnoremap = require("setup.helpers").set_keymaps, require("setup.keymap").nnoremap
 
 return {
-	"nvim-lua/plenary.nvim",                                           -- Common utils
+	"nvim-lua/plenary.nvim",                                                          -- Common utils
 
-	"kyazdani42/nvim-web-devicons",                                    -- Icons
+	"kyazdani42/nvim-web-devicons",                                                   -- Icons
 
-	"mvllow/modes.nvim",                                               -- Highlight line based on mode
+	"mvllow/modes.nvim",                                                              -- Highlight line based on mode
 
-	"freddiehaddad/feline.nvim",                                       -- Statusline
+	"freddiehaddad/feline.nvim",                                                      -- Statusline
 
-	"petertriho/nvim-scrollbar",                                       -- Scrollbar
+	"petertriho/nvim-scrollbar",                                                      -- Scrollbar
 
-	{ "EdenEast/nightfox.nvim",              priority = 1000 },        -- nightfox colorscheme
+	{ "EdenEast/nightfox.nvim",              priority = 1000 },                       -- nightfox colorscheme
 
-	{ "Exafunction/codeium.nvim" },                                    -- Codeium (AI completion)
+	{ "github/copilot.vim",                  event = "VeryLazy" },                    -- Copilot
 
-	{ "maxmellon/vim-jsx-pretty",            event = "VeryLazy" },     -- JSX/TSX syntax highlighting
+	{ "maxmellon/vim-jsx-pretty",            event = "VeryLazy" },                    -- JSX/TSX syntax highlighting
 
-	{ "phaazon/hop.nvim",                    event = "VeryLazy" },     -- Hop to a character
+	{ "phaazon/hop.nvim",                    event = "VeryLazy" },                    -- Hop to a character
 
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },           -- Indent guides
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },                          -- Indent guides
 
-	{ "kdheepak/lazygit.nvim",               event = "VeryLazy" },     -- Visual Git
+	{ "kdheepak/lazygit.nvim",               event = "VeryLazy" },                    -- Visual Git
 
-	{ "gelguy/wilder.nvim",                  event = "VeryLazy" },     -- Command line hints
+	{ "gelguy/wilder.nvim",                  event = "VeryLazy" },                    -- Command line hints
 
 	{ "ThePrimeagen/harpoon",                branch = "harpoon2", event = "VeryLazy" }, -- Create and move between file marks
 
@@ -123,12 +123,12 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-dap.nvim" },                  -- Debugging integration
-			{ "nvim-telescope/telescope-file-browser.nvim" },         -- File browser
+			{ "nvim-telescope/telescope-dap.nvim" },                   -- Debugging integration
+			{ "nvim-telescope/telescope-file-browser.nvim" },          -- File browser
 			{ "nvim-telescope/telescope-fzf-native.nvim",  build = "make" }, -- Fuzzy finding
-			{ "Theo-Steiner/togglescope" },                           -- Toggle search modes
+			{ "Theo-Steiner/togglescope" },                            -- Toggle search modes
 		},
-	},                                                              -- File search
+	},                                                               -- File search
 
 	{
 		"iamcco/markdown-preview.nvim",
