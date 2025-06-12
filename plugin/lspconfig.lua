@@ -161,7 +161,7 @@ for _, lsp in ipairs(servers) do
 							command = "clippy",
 						},
 						procMacro = {
-							enable = false,
+							enable = true,
 						},
 					},
 				},
